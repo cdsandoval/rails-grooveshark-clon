@@ -5,5 +5,5 @@ class Album < ApplicationRecord
   validates :title, presence: true,
             length: {   minimum:1, maximum:300 }
   validates :rating, presence: true,    
-            length: {   minimum:1, maximum:5   }
+            length: {   minimum:-1, maximum:1   }
 end
