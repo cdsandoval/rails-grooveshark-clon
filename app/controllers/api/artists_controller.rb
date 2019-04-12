@@ -14,8 +14,15 @@ class Api::ArtistsController < ApplicationController
 
   def albums
     @artist=Artist.find(params[:id])
-    render json: @artist.albums, status: :ok
- end
+    render json: @artist.albums , status: :ok
+  end
+  def search
+    if params[:name]
+      render json: Artist.where(name: params[:name]) , status: :ok
+    else
+      render json: { message: "It's necessary the name to search" }, status: :bad_request
+    end
+  end
 
 
 

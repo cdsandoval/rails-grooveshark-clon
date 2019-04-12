@@ -120,13 +120,6 @@ Album.find(el_disco_duro.id).songs << s22
 Album.find(el_disco_duro.id).songs << s23
 Album.find(el_disco_duro.id).songs << s24
 Album.find(el_disco_duro.id).songs << s25
-<<<<<<< HEAD
-Song.find(s21.id).artists << tiesto
-Song.find(s22.id).artists << tiesto
-Song.find(s23.id).artists << tiesto
-Song.find(s24.id).artists << tiesto
-Song.find(s25.id).artists << tiesto
-=======
 
 Song.find(s21.id).artists << daddy_yankee
 Song.find(s22.id).artists << daddy_yankee
@@ -139,4 +132,3 @@ Artist.find(daddy_yankee.id).songs << s22
 Artist.find(daddy_yankee.id).songs << s23
 Artist.find(daddy_yankee.id).songs << s24
 Artist.find(daddy_yankee.id).songs << s25
->>>>>>> 5553e2a850453ee9053130e642d8e2f7a5f58f9e
