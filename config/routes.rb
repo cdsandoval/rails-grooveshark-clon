@@ -3,14 +3,24 @@ Rails.application.routes.draw do
   namespace :api do
     resources :albums
     resources :artists do
-      resources :songs
+      member do
+        get :songs
+        get :albums
+
+      end
     end
-    resources :songs
 
+    resources :songs, only: [ :index, :show] do
+      member do
+        get :artists
+        get :albums
 
-    
+        put "/progress" => :song_progress
+        put "/rating" => :song_rating 
+      end
+    end
+
   end
-
 
 
 end

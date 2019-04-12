@@ -11,7 +11,10 @@ class Song < ApplicationRecord
 
   def  max_playback
     if self.progress > self.duration
-      return false
+      # self.errors[:base] << "Could not update if ...."
+      # raise "Value of progress has to be maximun the value of duration", Test
+      # false
+      throw :abort
     end
   end
 end
