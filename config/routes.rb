@@ -6,8 +6,12 @@ Rails.application.routes.draw do
       member do
         get :songs
         get :albums
-
       end
+      
+      collection do
+      get :search
+      end
+      
     end
 
     resources :songs, only: [ :index, :show] do
