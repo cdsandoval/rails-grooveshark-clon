@@ -17,6 +17,7 @@ Song.find(s2.id).artists << queen
 Song.find(s3.id).artists << queen
 Song.find(s4.id).artists << queen
 Song.find(s5.id).artists << queen
+
 Artist.find(queen.id).albums << a_night_ophera
 Artist.find(queen.id).songs << s1
 Artist.find(queen.id).songs << s2
@@ -43,6 +44,7 @@ Song.find(s7.id).artists << skrillex
 Song.find(s8.id).artists << skrillex
 Song.find(s9.id).artists << skrillex
 Song.find(s10.id).artists << skrillex
+
 Artist.find(skrillex.id).albums << recess
 Artist.find(skrillex.id).songs << s6
 Artist.find(skrillex.id).songs << s7
@@ -69,6 +71,7 @@ Song.find(s12.id).artists << tiesto
 Song.find(s13.id).artists << tiesto
 Song.find(s14.id).artists << tiesto
 Song.find(s15.id).artists << tiesto
+
 Artist.find(tiesto.id).albums << elements_of_life
 Artist.find(tiesto.id).songs << s11
 Artist.find(tiesto.id).songs << s12
@@ -90,6 +93,7 @@ Album.find(bylaw.id).songs << s17
 Album.find(bylaw.id).songs << s18
 Album.find(bylaw.id).songs << s19
 Album.find(bylaw.id).songs << s20
+
 Song.find(s16.id).artists << martin_garrix
 Song.find(s17.id).artists << martin_garrix
 Song.find(s18.id).artists << martin_garrix
@@ -116,6 +120,7 @@ Album.find(el_disco_duro.id).songs << s22
 Album.find(el_disco_duro.id).songs << s23
 Album.find(el_disco_duro.id).songs << s24
 Album.find(el_disco_duro.id).songs << s25
+
 Song.find(s21.id).artists << daddy_yankee
 Song.find(s22.id).artists << daddy_yankee
 Song.find(s23.id).artists << daddy_yankee
