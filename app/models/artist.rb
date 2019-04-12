@@ -4,5 +4,5 @@ class Artist < ApplicationRecord
 
   validates :name, presence: true, length: {in: 1..300}
   
-  validates :age, presence: true, length: {maximum: 2}, format: {with: /0-9/, message: "invalid age"}
+  validates :age, presence: true, length: {maximum: 2}, numericality: true
 end
