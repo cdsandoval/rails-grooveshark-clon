@@ -9,13 +9,11 @@ class Api::SongsController < ApplicationController
   end
 
   def artists
-    # puts params.to_s
     @song = Song.find(params[:id])
     render json: @song.artists, status: :ok
   end
 
   def song_progress
-    puts params.to_s
     song = Song.find(params[:id])
     success = song.update(
                           progress: params[:progress]
@@ -23,17 +21,23 @@ class Api::SongsController < ApplicationController
     if success
       render json: { message: "Update succesful, the song has #{song.progress} seconds in progress" }, status: :ok
     else
-      render json: success.errors, status: :bad_request
+      render json: { message: "The value of progress has to be lower or equal than #{song.duration}" }, status: :bad_request
     end
   end
 
   def song_rating
-    puts params.to_s
     song = Song.find(params[:id])
-    song.update(
-      rating: params[:rating]
-    )
-    render json: { message: "Update succesful rating song" }, status: :ok
+    success = song.update(
+                          rating: params[:rating]
+                         )
+    if success
+      render json: { message: "Update successfully rating song" }, status: :ok
+    else
+      render json: { message: "The value of rating has to be -1, 0 or 1" }, status: :bad_request
+    end
   end
   
+  rescue_from ActiveRecord::RecordNotFound do |e|
+    render json: { message: e.message }, status: :not_found
+  end
 end

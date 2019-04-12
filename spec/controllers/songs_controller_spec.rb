@@ -49,13 +49,15 @@ RSpec.describe Api::SongsController, type: :controller do
 
     it 'returns http status bad request' do
       get :song_progress, params: { id: @song1.id, progress: 10000 }
+      expected_song = JSON.parse(response.body)
       expect(response).to have_http_status(:bad_request)
+      expect(expected_song["message"]).to eq("The value of progress has to be lower or equal than #{@song1.duration}")
     end
 
     it 'returns a message from updated user' do
       get :song_progress, params: { id: @song1.id, progress: 20 }
-      expected_movie = JSON.parse(response.body)
-      expect(expected_movie["message"]).to eq("Update successfull playback movie")
+      expected_song = JSON.parse(response.body)
+      expect(expected_song["message"]).to eq("Update succesful, the song has 20 seconds in progress")
     end
   end
 
@@ -67,13 +69,15 @@ RSpec.describe Api::SongsController, type: :controller do
 
     it 'returns http status bad request' do
       get :song_rating, params: { id: @song1.id, rating: 20 }
+      expected_song = JSON.parse(response.body)
       expect(response).to have_http_status(:bad_request)
+      expect(expected_song["message"]).to eq("The value of rating has to be -1, 0 or 1")
     end
 
     it 'returns a message from updated user' do
       get :song_rating, params: { id: @song1.id, rating: -1 }
-      expected_movie = JSON.parse(response.body)
-      expect(expected_movie["message"]).to eq("Update successfull rating movie")
+      expected_song = JSON.parse(response.body)
+      expect(expected_song["message"]).to eq("Update successfully rating song")
     end
   end
 
