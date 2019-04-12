@@ -11,14 +11,13 @@ class Api::AlbumsController < ApplicationController
 
   def create 
     album = Album.new(album_params)
-    if article.save
+    if album.save
       render json: {status: 'SUCCESS', message: 'Saved album', data: album},
       status: :ok
     else
-      render json: {status: 'ERROR', message: 'Album not saved', data: album.errors},
+      render json: {status: 'ERROR', message: 'Album not saved', data:album.errors},
       status: :unprocessable_entity
     end
-
   end
 
 
