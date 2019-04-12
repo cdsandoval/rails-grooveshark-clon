@@ -1,5 +1,7 @@
 class Api::AlbumsController < ApplicationController
   def index
-    render json: Album.all
+    albums = Album.order('created_at DESC');
+    render json: {status: 'SUCCESS', message: 'Loaded albums', data: albums}, status: :ok
   end
+
 end
