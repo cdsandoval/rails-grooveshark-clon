@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   namespace :api do
     resources :albums
     resources :artists do
-      resources :songs
+      # resources :songs, only: [:artist_show]
+      get 'artist_show', on: :member
     end
     resources :songs
 
