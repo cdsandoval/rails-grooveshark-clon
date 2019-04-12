@@ -5,6 +5,7 @@ class Api::SongsController < ApplicationController
 
   def show
     @song = Song.find(params[:id])
+    render json: @song
   end
 
   def artists
@@ -16,19 +17,23 @@ class Api::SongsController < ApplicationController
   def song_progress
     puts params.to_s
     song = Song.find(params[:id])
-    song.progress.create(
-      progress: song.progress
-    )
-    render json: { message: "#{Song.progress} is the minutes in progress" }, status: :ok
+    success = song.update(
+                          progress: params[:progress]
+                         )
+    if success
+      render json: { message: "Update succesful, the song has #{song.progress} seconds in progress" }, status: :ok
+    else
+      render json: success.errors, status: :bad_request
+    end
   end
 
   def song_rating
     puts params.to_s
     song = Song.find(params[:id])
-    song.progress.create(
-      rating: song.rating
+    song.update(
+      rating: params[:rating]
     )
-    render json: { message: "#{Song.rating} is the current rating" }, status: :ok
+    render json: { message: "Update succesful rating song" }, status: :ok
   end
   
 end

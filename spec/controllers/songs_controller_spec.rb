@@ -43,17 +43,17 @@ RSpec.describe Api::SongsController, type: :controller do
 
   describe 'PUT progress' do
     it 'returns http status ok' do
-      get :playback, params: { id: @song1.id, progress: 1 }
+      get :song_progress, params: { id: @song1.id, progress: 1 }
       expect(response).to have_http_status(:ok)
     end
 
     it 'returns http status bad request' do
-      get :playback, params: { id: @movie1.id, progress: 10000 }
-      expect(response).to have_http_status(:ok)
+      get :song_progress, params: { id: @song1.id, progress: 10000 }
+      expect(response).to have_http_status(:bad_request)
     end
 
     it 'returns a message from updated user' do
-      get :playback, params: { id: @movie1.id, progress: 20 }
+      get :song_progress, params: { id: @song1.id, progress: 20 }
       expected_movie = JSON.parse(response.body)
       expect(expected_movie["message"]).to eq("Update successfull playback movie")
     end
@@ -61,17 +61,17 @@ RSpec.describe Api::SongsController, type: :controller do
 
   describe 'PUT rating' do
     it 'returns http status ok' do
-      get :rating, params: { id: @movie1.id, rating: 1 }
+      get :song_rating, params: { id: @song1.id, rating: 1 }
       expect(response).to have_http_status(:ok)
     end
 
     it 'returns http status bad request' do
-      get :rating, params: { id: @movie1.id, rating: 20 }
+      get :song_rating, params: { id: @song1.id, rating: 20 }
       expect(response).to have_http_status(:bad_request)
     end
 
     it 'returns a message from updated user' do
-      get :rating, params: { id: @movie1.id, rating: -1 }
+      get :song_rating, params: { id: @song1.id, rating: -1 }
       expected_movie = JSON.parse(response.body)
       expect(expected_movie["message"]).to eq("Update successfull rating movie")
     end
