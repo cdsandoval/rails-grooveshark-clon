@@ -1,0 +1,32 @@
+<h1>Artist</h1>
+<p>
+  <strong>Name:</strong>
+  <%= @artist.name %>
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @artist.age %>
+</p>
+
+<h3>Songs</h3>
+<ul>
+  <% @artist.songs.each do | song | %>
+    <li>
+    <%=  song.title%>
+    </li>
+  <% end %>
+  
+</ul>
+<h3>Albums</h3>
+<ul>
+  <% @artist.albums.each do | album | %>
+    <li>
+    <%=  album.title%>
+    </li>
+  <% end %>
+  
+</ul>
+
+
+<%= link_to 'Back', admin_artists_path %>
