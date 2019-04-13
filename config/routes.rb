@@ -12,8 +12,14 @@ Rails.application.routes.draw do
         put "/progress" => :song_progress
         put "/rating" => :song_rating 
       end
+      get "/search" => :search, on: :collection
     end
 
+  end
+
+  namespace :admin do
+    resources :songs do
+    end
   end
 
 

@@ -8,6 +8,14 @@ RSpec.describe Api::SongsController, type: :controller do
                           duration: 214,
                           rating: 0,
                           progress: 0)
+    @song2 = Song.create( title: "You have done for me",
+                          duration: 267,
+                          rating: 0,
+                          progress: 0)
+    @song3 = Song.create( title: "The long son",
+                          duration: 273,
+                          rating: 0,
+                          progress: 0)
   end
 
   describe "GET #new" do
@@ -19,7 +27,7 @@ RSpec.describe Api::SongsController, type: :controller do
     it 'render json with all users' do
       get :index
       songs = JSON.parse(response.body)
-      expect(songs.size).to eq 1
+      expect(songs.size).to eq 3
     end
   end
 
@@ -41,6 +49,33 @@ RSpec.describe Api::SongsController, type: :controller do
     end
   end
 
+  describe 'GET search' do
+    it 'returns http status ok' do
+      get :search, params: { title: "long" }
+      expect(response).to have_http_status(:ok)
+    end
+
+    it 'render the founded songs' do
+      get :search, params: { title: "long" }
+      expected_song = JSON.parse(response.body)
+      expect(expected_song.size).to eq(2)
+    end
+
+    it 'returns http status ok when there no founded songs' do
+      get :search, params: { title: "first" }
+      expected_song = JSON.parse(response.body)
+      expect(response).to have_http_status(:ok)
+      expect(expected_song.size).to eq(0)
+    end
+
+    it 'returns all songs when the name of parameter is not title' do
+      get :search, params: { tittle: "first" }
+      expected_song = JSON.parse(response.body)
+      expect(response).to have_http_status(:ok)
+      expect(expected_song.size).to eq(3)
+    end
+  end
+
   describe 'PUT progress' do
     it 'returns http status ok' do
       get :song_progress, params: { id: @song1.id, progress: 1 }
@@ -51,7 +86,14 @@ RSpec.describe Api::SongsController, type: :controller do
       get :song_progress, params: { id: @song1.id, progress: 10000 }
       expected_song = JSON.parse(response.body)
       expect(response).to have_http_status(:bad_request)
-      expect(expected_song["message"]).to eq("The value of progress has to be lower or equal than #{@song1.duration}")
+      expect(expected_song["message"]).to eq("Progress has to be lower or equal than #{@song1.duration}")
+    end
+
+    it 'returns http status bad request when the name of parameter is not progress' do
+      get :song_progress, params: { id: @song1.id, progres: 10000 }
+      expected_song = JSON.parse(response.body)
+      expect(response).to have_http_status(:bad_request)
+      expect(expected_song["message"]).to eq("This request has to have the parameters id and progress")
     end
 
     it 'returns a message from updated user' do
@@ -72,6 +114,13 @@ RSpec.describe Api::SongsController, type: :controller do
       expected_song = JSON.parse(response.body)
       expect(response).to have_http_status(:bad_request)
       expect(expected_song["message"]).to eq("The value of rating has to be -1, 0 or 1")
+    end
+
+    it 'returns http status bad request when the name of parameter is not rating' do
+      get :song_rating, params: { id: @song1.id, ratin: 100 }
+      expected_song = JSON.parse(response.body)
+      expect(response).to have_http_status(:bad_request)
+      expect(expected_song["message"]).to eq("This request has to have the parameters id and rating")
     end
 
     it 'returns a message from updated user' do
