@@ -24,6 +24,13 @@ Artist.find(queen.id).songs << s3
 Artist.find(queen.id).songs << s4
 Artist.find(queen.id).songs << s5
 
+Artist.find(queen.id).albums << a_night_ophera
+Artist.find(queen.id).songs << s1
+Artist.find(queen.id).songs << s2
+Artist.find(queen.id).songs << s3
+Artist.find(queen.id).songs << s4
+Artist.find(queen.id).songs << s5
+
 # Data
 s6 = Song.create(title:"Recess", duration: 230, rating:1, progress: 0)
 s7 = Song.create(title:"Try It Out", duration: 330, rating:1, progress: 0)
@@ -50,6 +57,13 @@ Artist.find(skrillex.id).songs << s8
 Artist.find(skrillex.id).songs << s9
 Artist.find(skrillex.id).songs << s10
 
+Artist.find(skrillex.id).albums << recess
+Artist.find(skrillex.id).songs << s6
+Artist.find(skrillex.id).songs << s7
+Artist.find(skrillex.id).songs << s8
+Artist.find(skrillex.id).songs << s9
+Artist.find(skrillex.id).songs << s10
+
 # Data
 s11 = Song.create(title:"Ten Seconds Before Sunrise", duration: 380, rating:1, progress: 0)
 s12 = Song.create(title:"Everything", duration: 290, rating:1, progress: 0)
@@ -69,6 +83,13 @@ Song.find(s12.id).artists << tiesto
 Song.find(s13.id).artists << tiesto
 Song.find(s14.id).artists << tiesto
 Song.find(s15.id).artists << tiesto
+Artist.find(tiesto.id).albums << elements_of_life
+Artist.find(tiesto.id).songs << s11
+Artist.find(tiesto.id).songs << s12
+Artist.find(tiesto.id).songs << s13
+Artist.find(tiesto.id).songs << s14
+Artist.find(tiesto.id).songs << s15
+
 Artist.find(tiesto.id).albums << elements_of_life
 Artist.find(tiesto.id).songs << s11
 Artist.find(tiesto.id).songs << s12
