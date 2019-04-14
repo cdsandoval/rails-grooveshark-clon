@@ -23,8 +23,8 @@ class Admin::ArtistsController < ApplicationController
    end
 
    def destroy
-    artist = Artist.find(params[:id])
-    artist.destroy
+    @artist = Artist.find(params[:id])
+    @artist.destroy
     redirect_to admin_artists_path, notice: "The artist was successfully deleted"
   end
 
