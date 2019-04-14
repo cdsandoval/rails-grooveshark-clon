@@ -1,0 +1,23 @@
+<h1>List of Albums</h1>
+<table>
+    <tr>
+        <thead>
+            <th>Title</th>
+            <th>Rating</th>
+        </thead>
+    </tr>
+    <%@albums.each do |album| %>
+    <tr>
+        <td><%= albums.title%></td>
+        <td><%= albums.rating%></td>
+        <td>
+            <%= link_to "Details", admin_album_path(album) %>
+            <%= link_to "Update"%>
+            <%= link_to "Delete"%>
+        </td>
+    </tr>
+    <%end%>
+</table>
+
+
+<%= link_to 'New Artist', new_admin_artist_path %>

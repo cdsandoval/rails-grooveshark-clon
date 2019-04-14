@@ -23,16 +23,26 @@ Rails.application.routes.draw do
         put "/progress" => :song_progress
         put "/rating" => :song_rating 
       end
-      get "/search" => :search, on: :collection
     end
 
-  end
+    resources :albums, only: [ :index, :show] do
+      member do
+        get :songs
+        get :artists
 
+        put "/rating" => :album_rating
+        
+      end
+    end
+
+<<<<<<< HEAD
   namespace :admin do
     resources :songs do
       get "/new" => :edit, on: :collection
       get "/edit" => :edit, on: :member
     end
+=======
+>>>>>>> 463016ab44ff3a41e553e38c33344ac266ab0f98
   end
 
 

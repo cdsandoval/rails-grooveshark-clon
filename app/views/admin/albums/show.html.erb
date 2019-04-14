@@ -1,0 +1,12 @@
+<h1><%=This is the @album%></h1>
+      <% @albums.each do | album | %>
+    <tr>
+        <td><%= album.title%></td>
+        <td><%= album.rating%></td>
+    </tr>
+    <%end%>
+</table>
+
+<%= link_to "Delete", admin_album_path(@album), method: :delete, data: { confirm: "Do you really git want to delete this album?" } %>
+<%= link_to "Albums List", admin_album_path %>
+<%= link_to "Edit", edit_admin_album_path(@album)%>
