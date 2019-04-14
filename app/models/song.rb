@@ -17,5 +17,4 @@ class Song < ApplicationRecord
       throw :abort
     end
   end
-
 end
