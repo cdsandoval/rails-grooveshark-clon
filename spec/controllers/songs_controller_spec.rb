@@ -24,7 +24,7 @@ RSpec.describe Api::SongsController, type: :controller do
       expect(response).to have_http_status(:success)
     end
 
-    it 'render json with all users' do
+    it 'render json with all songs' do
       get :index
       songs = JSON.parse(response.body)
       expect(songs.size).to eq 3
@@ -96,7 +96,7 @@ RSpec.describe Api::SongsController, type: :controller do
       expect(expected_song["message"]).to eq("This request has to have the parameters id and progress")
     end
 
-    it 'returns a message from updated user' do
+    it 'returns a message from updated song' do
       get :song_progress, params: { id: @song1.id, progress: 20 }
       expected_song = JSON.parse(response.body)
       expect(expected_song["message"]).to eq("Update succesful, the song has 20 seconds in progress")
@@ -123,7 +123,7 @@ RSpec.describe Api::SongsController, type: :controller do
       expect(expected_song["message"]).to eq("This request has to have the parameters id and rating")
     end
 
-    it 'returns a message from updated user' do
+    it 'returns a message from updated song' do
       get :song_rating, params: { id: @song1.id, rating: -1 }
       expected_song = JSON.parse(response.body)
       expect(expected_song["message"]).to eq("Update successfully rating song")
