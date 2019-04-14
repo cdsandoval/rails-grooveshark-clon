@@ -8,12 +8,12 @@
     </tr>
     <%@albums.each do |album| %>
     <tr>
-        <td><%= albums.title%></td>
-        <td><%= albums.rating%></td>
+        <td><%= album.title%></td>
+        <td><%= album.rating%></td>
         <td>
-            <%= link_to "Details", admin_album_path(song) %>
-            <%= link_to "Update", edit_admin_album_path(song)%>
-            <%= link_to "Delete", admin_album_path(song), method: :delete, data: { confirm: "Really delete this album?" } %>
+            <%= link_to "Details", admin_album_path(album) %>
+            <%= link_to "Update", edit_admin_album_path(album)%>
+            <%= link_to "Delete", admin_album_path(album), method: :delete, data: { confirm: "Really delete this album?" } %>
         </td>
     </tr>
     <%end%>

@@ -18,6 +18,7 @@ Rails.application.routes.draw do
         put "/progress" => :song_progress
         put "/rating" => :song_rating
       end
+      get "/search" => :search, on: :collection
     end
 
     resources :albums, only: [ :index, :show] do

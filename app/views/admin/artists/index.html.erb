@@ -13,7 +13,8 @@
         <td><%= artist.age%></td>
         <td>
             <%= link_to "Details", admin_artist_path(artist) %>
-            <%= link_to "Update"%>
+            <%= link_to "Update", edit_admin_artist_path(artist)%>
+            <%= link_to "Delete", admin_artist_path(artist), method: :delete, data: { confirm: "Really delete this artist?" } %>
         </td>
     </tr>
     <%end%>
