@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   namespace :api do
-    resources :albums do 
-      get "/search" => :
-    end
+    resources :albums
     resources :artists 
 
     resources :songs, only: [ :index, :show] do
@@ -14,13 +12,13 @@ Rails.application.routes.draw do
         put "/progress" => :song_progress
         put "/rating" => :song_rating 
       end
+      get "/search" => :search, on: :collection
     end
 
-    namespace :admin do
-      resources :songs do
-      end
-    end 
+  end
 
+  namespace :admin do
+    resources :songs
   end
 
 
