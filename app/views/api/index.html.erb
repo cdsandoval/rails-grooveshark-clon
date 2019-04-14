@@ -1,0 +1,12 @@
+<h1>This is the list of our Songs!</h1>
+
+
+<% if flash[:errors] %>
+  <div class="errors">
+    <ul>
+      <% flash[:errors].each do |e| %>
+      <li><%= e %></li>
+      <% end %> 
+    </ul>
+  </div>
+<%end%>
