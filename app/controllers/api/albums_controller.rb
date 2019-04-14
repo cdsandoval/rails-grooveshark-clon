@@ -21,6 +21,21 @@ class Api::AlbumsController < ApplicationController
     render json: @album.songs, status: :ok
   end
 
+  def album
+    album = Song.find(params[:id])
+    success = album.update(
+                          rating: params[:rating]
+                         )
+    if success
+      render json: { message: "Album rating updated successfully" }, status: :ok
+    else
+      render json: { message: "The value of rating has to be -1, 0 or 1" }, status: :bad_request
+    end
+  end
+
+  rescue_from ActiveRecord::RecordNotFound do |e|
+    render json: { message: e.message }, status: :not_found
+  end
 
 
   # Admin methods
