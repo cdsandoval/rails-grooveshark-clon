@@ -18,7 +18,10 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :songs
+    resources :songs do
+      get "/new" => :edit, on: :collection
+      get "/edit" => :edit, on: :member
+    end
   end
 
 

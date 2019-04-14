@@ -37,4 +37,19 @@ class Admin::SongsController < ApplicationController
     song.destroy
     redirect_to admin_songs_path, notice: "The song was successfully deleted"
   end
+
+  private
+
+  def song_params
+    params.require(:song).permit(
+      :title,
+      :duration,
+      :rating,
+      :progress
+    )
+  end
+
+  rescue_from ActiveRecord::RecordNotFound do |e|
+    render json: { message: e.message }, status: :not_found
+  end
 end
