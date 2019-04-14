@@ -17,8 +17,8 @@
         <td><%= song.rating%></td>
         <td>
             <%= link_to "Details", admin_song_path(song) %>
-            <%= link_to "Update"%>
-            <%= link_to "Delete"%>
+            <%= link_to "Update", edit_admin_song_path(song)%>
+            <%= link_to "Delete", admin_song_path(song), method: :delete, data: { confirm: "Really delete this song?" } %>
         </td>
     </tr>
     <%end%>
