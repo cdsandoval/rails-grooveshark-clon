@@ -1,11 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
 # Data
 s1 = Song.create(title:"Bohemian Rhapsody", duration: 330, rating:0, progress: 0)
 s2 = Song.create(title:"God Save the Queen", duration: 420, rating:0, progress: 0)
@@ -25,6 +17,19 @@ Song.find(s2.id).artists << queen
 Song.find(s3.id).artists << queen
 Song.find(s4.id).artists << queen
 Song.find(s5.id).artists << queen
+Artist.find(queen.id).albums << a_night_ophera
+Artist.find(queen.id).songs << s1
+Artist.find(queen.id).songs << s2
+Artist.find(queen.id).songs << s3
+Artist.find(queen.id).songs << s4
+Artist.find(queen.id).songs << s5
+
+Artist.find(queen.id).albums << a_night_ophera
+Artist.find(queen.id).songs << s1
+Artist.find(queen.id).songs << s2
+Artist.find(queen.id).songs << s3
+Artist.find(queen.id).songs << s4
+Artist.find(queen.id).songs << s5
 
 # Data
 s6 = Song.create(title:"Recess", duration: 230, rating:0, progress: 0)
@@ -45,6 +50,19 @@ Song.find(s7.id).artists << skrillex
 Song.find(s8.id).artists << skrillex
 Song.find(s9.id).artists << skrillex
 Song.find(s10.id).artists << skrillex
+Artist.find(skrillex.id).albums << recess
+Artist.find(skrillex.id).songs << s6
+Artist.find(skrillex.id).songs << s7
+Artist.find(skrillex.id).songs << s8
+Artist.find(skrillex.id).songs << s9
+Artist.find(skrillex.id).songs << s10
+
+Artist.find(skrillex.id).albums << recess
+Artist.find(skrillex.id).songs << s6
+Artist.find(skrillex.id).songs << s7
+Artist.find(skrillex.id).songs << s8
+Artist.find(skrillex.id).songs << s9
+Artist.find(skrillex.id).songs << s10
 
 # Data
 s11 = Song.create(title:"Ten Seconds Before Sunrise", duration: 380, rating:0, progress: 0)
@@ -65,6 +83,19 @@ Song.find(s12.id).artists << tiesto
 Song.find(s13.id).artists << tiesto
 Song.find(s14.id).artists << tiesto
 Song.find(s15.id).artists << tiesto
+Artist.find(tiesto.id).albums << elements_of_life
+Artist.find(tiesto.id).songs << s11
+Artist.find(tiesto.id).songs << s12
+Artist.find(tiesto.id).songs << s13
+Artist.find(tiesto.id).songs << s14
+Artist.find(tiesto.id).songs << s15
+
+Artist.find(tiesto.id).albums << elements_of_life
+Artist.find(tiesto.id).songs << s11
+Artist.find(tiesto.id).songs << s12
+Artist.find(tiesto.id).songs << s13
+Artist.find(tiesto.id).songs << s14
+Artist.find(tiesto.id).songs << s15
 
 # Data
 s16 = Song.create(title:"Breach (Walk Alone)", duration: 200, rating:0, progress: 0)
@@ -80,11 +111,17 @@ Album.find(bylaw.id).songs << s17
 Album.find(bylaw.id).songs << s18
 Album.find(bylaw.id).songs << s19
 Album.find(bylaw.id).songs << s20
-Song.find(s16.id).artists << tiesto
-Song.find(s17.id).artists << tiesto
-Song.find(s18.id).artists << tiesto
-Song.find(s19.id).artists << tiesto
-Song.find(s20.id).artists << tiesto
+Song.find(s16.id).artists << martin_garrix
+Song.find(s17.id).artists << martin_garrix
+Song.find(s18.id).artists << martin_garrix
+Song.find(s19.id).artists << martin_garrix
+Song.find(s20.id).artists << martin_garrix
+Artist.find(martin_garrix.id).albums << bylaw
+Artist.find(martin_garrix.id).songs << s16
+Artist.find(martin_garrix.id).songs << s17
+Artist.find(martin_garrix.id).songs << s18
+Artist.find(martin_garrix.id).songs << s19
+Artist.find(martin_garrix.id).songs << s20
 
 # Data
 s21 = Song.create(title:"Shaky Shaky", duration: 240, rating:0, progress: 0)
@@ -100,26 +137,14 @@ Album.find(el_disco_duro.id).songs << s22
 Album.find(el_disco_duro.id).songs << s23
 Album.find(el_disco_duro.id).songs << s24
 Album.find(el_disco_duro.id).songs << s25
-Song.find(s21.id).artists << tiesto
-Song.find(s22.id).artists << tiesto
-Song.find(s23.id).artists << tiesto
-Song.find(s24.id).artists << tiesto
-Song.find(s25.id).artists << tiesto
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Song.find(s21.id).artists << daddy_yankee
+Song.find(s22.id).artists << daddy_yankee
+Song.find(s23.id).artists << daddy_yankee
+Song.find(s24.id).artists << daddy_yankee
+Song.find(s25.id).artists << daddy_yankee
+Artist.find(daddy_yankee.id).albums << el_disco_duro
+Artist.find(daddy_yankee.id).songs << s21
+Artist.find(daddy_yankee.id).songs << s22
+Artist.find(daddy_yankee.id).songs << s23
+Artist.find(daddy_yankee.id).songs << s24
+Artist.find(daddy_yankee.id).songs << s25

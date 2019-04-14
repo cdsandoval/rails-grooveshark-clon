@@ -6,5 +6,4 @@ class Album < ApplicationRecord
             length:    { minimum:1, maximum:300 }
   validates :rating, 
             inclusion: { in: [ 1, 0, -1 ] }
-
 end
