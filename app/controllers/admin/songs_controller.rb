@@ -6,7 +6,7 @@ class Admin::SongsController < ApplicationController
   end
 
   def show
-    song = Song.find(params[:id])
+    @song = Song.find(params[:id])
   end
   
   def new
@@ -20,7 +20,7 @@ class Admin::SongsController < ApplicationController
   end
 
   def edit
-    @song = Song.find(params[:id_song])
+    @song = Song.find(params[:id])
   end
 
   def update
