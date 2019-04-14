@@ -1,0 +1,43 @@
+<h1>Artist: <%= @artist.name %></h1>
+<p>
+  <strong>Age:</strong>
+  <%= @artist.age %>
+</p>
+
+<h2>Songs</h2>
+<table>
+    <tr>
+        <thead>
+            <th>Title</th>
+            <th>Duration</th>
+            <th>Rating</th>
+        </thead>
+    </tr>
+      <% @artist.songs.each do | song | %>
+    <tr>
+        <td><%= song.title%></td>
+        <td><%= song.duration%></td>
+        <td><%= song.rating%></td>
+    </tr>
+    <%end%>
+</table>
+
+
+<h2>Albums</h3>
+<table>
+    <tr>
+        <thead>
+            <th>Title</th>
+            <th>Rating</th>
+        </thead>
+    </tr>
+  <% @artist.albums.each do | album | %>
+    <tr>
+        <td><%= album.title%></td>
+        <td><%= album.rating%></td>
+    </tr>
+    <%end%>
+</table>
+
+<%= link_to 'Edit', edit_admin_artist_path(@artist) %> |
+<%= link_to 'Back', admin_artists_path %>

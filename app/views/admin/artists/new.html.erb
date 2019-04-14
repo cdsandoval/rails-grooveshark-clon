@@ -1,0 +1,29 @@
+<h1>New Artist</h1>
+  <% if  @artist.errors.any? %>
+    <div id="error_explanation">
+      <h3><%= pluralize( @artist.errors.count, "error") %> ,this artist can't be saved :</h3>
+
+      <ul>
+      <%  @artist.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+    <% end %>
+
+<%= form_for [:admin, @artist] do |f| %>
+
+    <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :age %>
+      <%= f.text_field :age %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>
