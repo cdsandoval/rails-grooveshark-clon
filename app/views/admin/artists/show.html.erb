@@ -4,7 +4,7 @@
   <%= @artist.age %>
 </p>
 
-<h2>Songs</h3>
+<h2>Songs</h2>
 <table>
     <tr>
         <thead>
@@ -15,7 +15,7 @@
     </tr>
       <% @artist.songs.each do | song | %>
     <tr>
-        <td><%= link_to song.title%></td>
+        <td><%= song.title%></td>
         <td><%= song.duration%></td>
         <td><%= song.rating%></td>
     </tr>
@@ -33,7 +33,7 @@
     </tr>
   <% @artist.albums.each do | album | %>
     <tr>
-        <td><%= link_to album.title%></td>
+        <td><%= album.title%></td>
         <td><%= album.rating%></td>
     </tr>
     <%end%>
