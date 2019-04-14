@@ -31,8 +31,9 @@
     | # | type | route | description |
     |:-:|:---- |:----------- |:------|
     | 1 | ```GET``` | ```/songs``` | list all songs as table in a web page |
-    | 2 | ```GET``` | ```/users/:id``` | list user's details by :id |
-    | 3 | ```POST``` | ```/users``` | adds user to system **(1)** |
+    | 2 | ```GET``` | ```/songs/:id``` | list songs's details by :id in a web page |
+    | 3 | ```GET``` | ```/songs/new``` | view to create a new song |
+    | 3 | ```POST``` | ```/songs``` | adds song to database and redirect to the page /songs |
     | 4 | ```DELETE``` | ```/users/:id``` | deletes user by :id |
     | 5 | ```PUT``` | ```/users/:id``` | overwrites user's data by :id **(1)** |
     | 6 | ```GET``` | ```/users/:id/channels``` | list all channels created by user :id |

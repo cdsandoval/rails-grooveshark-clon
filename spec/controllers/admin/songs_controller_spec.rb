@@ -50,7 +50,7 @@ RSpec.describe Admin::SongsController, type: :controller do
 
   describe "POST create" do
     it "returns http success" do
-      get :create
+      get :create, params: { title: "Nueva Cancion", duration: 100, rating: 0, progress: 0 }
       expect(response).to have_http_status(:success)
     end
   end
