@@ -18,8 +18,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :songs do
-    end
+    resources :songs
   end
 
 
