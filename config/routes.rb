@@ -36,6 +36,8 @@ Rails.application.routes.draw do
     end
 
   end
-
+  namespace :admin do
+    resources :artists
+  end
 
 end
