@@ -1,13 +1,13 @@
-<h1><%=This is the @song number @song.id_song%></h1>
-      <% @songs.each do | song | %>
+<h1>Song: <%= @song.title %></h1>
+      <% @song %>
     <tr>
-        <td><%= song.title%></td>
-        <td><%= song.duration%></td>
-        <td><%= song.rating%></td>
-        <td><%= song.progress %></td>
+        <td><%= @song.title%></td>
+        <td><%= @song.duration%></td>
+        <td><%= @song.rating%></td>
+        <td><%= @song.progress %></td>
     </tr>
-    <%end%>
 </table>
+
 
 <%= link_to "Delete", admin_song_path(@song), method: :delete, data: { confirm: "Do you really git want to delete this song?" } %>
 <%= link_to "Songs List", admin_song_path %>
