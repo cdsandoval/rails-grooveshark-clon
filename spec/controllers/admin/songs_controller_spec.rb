@@ -38,7 +38,7 @@ RSpec.describe Admin::SongsController, type: :controller do
 
   describe "GET edit" do
     it "returns http success" do
-      get :edit, params:  { id_song: @song.id }
+      get :edit, params:  { id: @song.id }
       expect(response).to have_http_status(:success)
     end
 
