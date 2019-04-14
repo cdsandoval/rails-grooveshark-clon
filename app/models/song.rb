@@ -7,14 +7,4 @@ class Song < ApplicationRecord
   validates :rating, inclusion: { in: [ 1, 0, -1 ]}
   validates :progress, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
-  before_update :max_playback
-
-  def  max_playback
-    if self.progress > self.duration
-      # self.errors[:base] << "Could not update if ...."
-      # raise "Value of progress has to be maximun the value of duration", Test
-      # false
-      throw :abort
-    end
-  end
 end
