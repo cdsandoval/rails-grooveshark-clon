@@ -2,6 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Admin::ArtistsController, type: :controller do
 
+  before do
+    @artist = Artist.create(name: "Juanes",age: "35")
+  end
+
   describe "GET #index" do
     it "returns http success" do
       get :index
@@ -11,7 +15,7 @@ RSpec.describe Admin::ArtistsController, type: :controller do
 
   describe "GET #show" do
     it "returns http success" do
-      get :show
+      get :show, params: { id: @artist.id }
       expect(response).to have_http_status(:success)
     end
   end

@@ -48,25 +48,4 @@ RSpec.describe Admin::SongsController, type: :controller do
     end
   end
 
-  describe "POST create" do
-    it "returns http success" do
-      get :create, params: { title: "Nueva Cancion", duration: 100, rating: 0, progress: 0 }
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "PUT update" do
-    it "returns http success" do
-      get :edit
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "DELETE #destroy" do
-    it "returns http success" do
-      get :edit
-      expect(response).to have_http_status(:success)
-    end
-  end
-
 end

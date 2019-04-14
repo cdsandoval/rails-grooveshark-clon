@@ -2,17 +2,12 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   namespace :api do
-    resources :albums
-    resources :artists do
+    resources :artists, only: [ :index, :show] do
       member do
         get :songs
         get :albums
       end
-      
-      collection do
-      get :search
-      end
-
+      get "/search" => :search, on: :collection
     end
 
     resources :songs, only: [ :index, :show] do
@@ -21,8 +16,9 @@ Rails.application.routes.draw do
         get :albums
 
         put "/progress" => :song_progress
-        put "/rating" => :song_rating 
+        put "/rating" => :song_rating
       end
+      get "/search" => :search, on: :collection
     end
 
     resources :albums, only: [ :index, :show] do
@@ -31,16 +27,25 @@ Rails.application.routes.draw do
         get :artists
 
         put "/rating" => :album_rating
-        
       end
+      get "/search" => :search, on: :collection
     end
+  end
 
   namespace :admin do
     resources :songs do
       get "/new" => :edit, on: :collection
       get "/edit" => :edit, on: :member
     end
+
+    resources :artists do
+      get "/new" => :edit, on: :collection
+      get "/edit" => :edit, on: :member
+    end
+
+    resources :albums do
+      get "/new" => :edit, on: :collection
+      get "/edit" => :edit, on: :member
+    end
   end
-
-
 end
