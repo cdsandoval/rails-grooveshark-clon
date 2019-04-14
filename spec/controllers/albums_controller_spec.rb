@@ -40,10 +40,17 @@ RSpec.describe Api::AlbumsController, type: :controller do
       expect(response).to have_http_status(:success)
     end
 
+<<<<<<< HEAD
     it 'render json with all albums' do
       get :index
       albums = JSON.parse(response.body)
       expect(albums.size).to eq 2
+=======
+    it 'render json with all users' do
+      get :index
+      albumss = JSON.parse(response.body)
+      expect(albums.size).to eq 1
+>>>>>>> 5ae971e38ca09aa1e5237609e88221aadc4af6cf
     end
   end
 
@@ -53,7 +60,11 @@ RSpec.describe Api::AlbumsController, type: :controller do
       expect(response).to have_http_status(:ok)
     end
 
+<<<<<<< HEAD
     it 'render the correct album' do
+=======
+    it 'render the right album' do
+>>>>>>> 5ae971e38ca09aa1e5237609e88221aadc4af6cf
       get :show, params: { id: @album1.id }
       expected_album = JSON.parse(response.body)
       expect(expected_album["id"]).to eq(@album1.id)
@@ -65,6 +76,7 @@ RSpec.describe Api::AlbumsController, type: :controller do
     end
   end
 
+<<<<<<< HEAD
   describe 'GET search' do
     it 'returns http status ok' do
       get :search, params: { title: "long" }
@@ -118,6 +130,8 @@ RSpec.describe Api::AlbumsController, type: :controller do
     end
   end
 
+=======
+>>>>>>> 5ae971e38ca09aa1e5237609e88221aadc4af6cf
   describe 'PUT rating' do
     it 'returns http status ok' do
       get :album_rating, params: { id: @album1.id, rating: 1 }
@@ -130,6 +144,7 @@ RSpec.describe Api::AlbumsController, type: :controller do
       expect(response).to have_http_status(:bad_request)
       expect(expected_album["message"]).to eq("The value of rating has to be -1, 0 or 1")
     end
+<<<<<<< HEAD
 
     it 'returns http status bad request when the name of parameter is not rating' do
       get :album_rating, params: { id: @album1.id, ratin: 100 }
@@ -143,6 +158,8 @@ RSpec.describe Api::AlbumsController, type: :controller do
       expected_album = JSON.parse(response.body)
       expect(expected_album["message"]).to eq("Update successfully rating album")
     end
+=======
+>>>>>>> 5ae971e38ca09aa1e5237609e88221aadc4af6cf
   end
 
 end
