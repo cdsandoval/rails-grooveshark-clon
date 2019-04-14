@@ -8,8 +8,8 @@
     </tr>
     <%@albums.each do |album| %>
     <tr>
-        <td><%= albums.name%></td>
-        <td><%= albums.age%></td>
+        <td><%= albums.title%></td>
+        <td><%= albums.rating%></td>
         <td>
             <%= link_to "Details", admin_album_path(album) %>
             <%= link_to "Update"%>
