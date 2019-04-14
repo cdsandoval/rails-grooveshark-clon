@@ -22,6 +22,11 @@ class Api::SongsController < ApplicationController
     render json: song.artists, status: :ok
   end
 
+  def albums
+    song = Song.find(params[:id])
+    render json: song.albums, status: :ok
+  end
+
   def song_progress
     if params.has_key?("id") and params.has_key?("progress")
       song = Song.find(params[:id])

@@ -1,14 +1,41 @@
 <h1>Song: <%= @song.title %></h1>
-      <% @song %>
+<p>
+  <strong>Duration:</strong>
+  <%= @song.duration %>
+</p>
+
+<h2>Artist</h2>
+<table>
     <tr>
-        <td><%= @song.title%></td>
-        <td><%= @song.duration%></td>
-        <td><%= @song.rating%></td>
-        <td><%= @song.progress %></td>
+        <thead>
+            <th>Name</th>
+            <th>Age</th>
+        </thead>
     </tr>
+      <% @song.artists.each do | artist | %>
+    <tr>
+        <td><%= artist.name%></td>
+        <td><%= artist.age%></td>
+    </tr>
+    <%end%>
 </table>
 
 
-<%= link_to "Delete", admin_song_path(@song), method: :delete, data: { confirm: "Do you really git want to delete this song?" } %>
-<%= link_to "Songs List", admin_song_path %>
-<%= link_to "Edit", edit_admin_song_path(@song)%>
+<h2>Albums</h3>
+<table>
+    <tr>
+        <thead>
+            <th>Title</th>
+            <th>Rating</th>
+        </thead>
+    </tr>
+  <% @song.albums.each do | album | %>
+    <tr>
+        <td><%= album.title%></td>
+        <td><%= album.rating%></td>
+    </tr>
+    <%end%>
+</table>
+
+<%= link_to 'Edit', edit_admin_song_path(@song) %> |
+<%= link_to 'Back', admin_artists_path %>

@@ -4,10 +4,18 @@ RSpec.describe Api::SongsController, type: :controller do
 
   before do
     Song.delete_all
+    Artist.delete_all
+    Album.delete_all
     @song1 = Song.create( title: "How long",
                           duration: 214,
                           rating: 0,
                           progress: 0)
+    @album1 = Album.create( title: "Nuevo album",
+                            rating: 0)
+    @artist1 = Artist.create(  name: "Juanes",
+                              age: "35")
+    @song1.albums << @album1
+    @song1.artists << @artist1
     @song2 = Song.create( title: "You have done for me",
                           duration: 267,
                           rating: 0,
@@ -18,7 +26,7 @@ RSpec.describe Api::SongsController, type: :controller do
                           progress: 0)
   end
 
-  describe "GET #new" do
+  describe "GET index" do
     it "returns http success" do
       get :index
       expect(response).to have_http_status(:success)
@@ -73,6 +81,32 @@ RSpec.describe Api::SongsController, type: :controller do
       expected_song = JSON.parse(response.body)
       expect(response).to have_http_status(:ok)
       expect(expected_song.size).to eq(3)
+    end
+  end
+
+  describe "GET albums" do
+    it 'returns http status ok' do
+      get :albums, params: { id: @song1.id }
+      expect(response).to have_http_status(:ok)
+    end
+
+    it 'render the founded albums' do
+      get :albums, params: { id: @song1.id }
+      expected_song = JSON.parse(response.body)
+      expect(expected_song.size).to eq(1)
+    end
+  end
+
+  describe "GET artists" do
+    it 'returns http status ok' do
+      get :artists, params: { id: @song1.id }
+      expect(response).to have_http_status(:ok)
+    end
+
+    it 'render the founded artists' do
+      get :artists, params: { id: @song1.id }
+      expected_song = JSON.parse(response.body)
+      expect(expected_song.size).to eq(1)
     end
   end
 
