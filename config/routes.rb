@@ -35,14 +35,11 @@ Rails.application.routes.draw do
       end
     end
 
-<<<<<<< HEAD
   namespace :admin do
     resources :songs do
       get "/new" => :edit, on: :collection
       get "/edit" => :edit, on: :member
     end
-=======
->>>>>>> 463016ab44ff3a41e553e38c33344ac266ab0f98
   end
 
 
