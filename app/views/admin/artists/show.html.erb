@@ -15,7 +15,7 @@
     </tr>
       <% @artist.songs.each do | song | %>
     <tr>
-        <td><%= song.title%></td>
+        <td><%= link_to song.title%></td>
         <td><%= song.duration%></td>
         <td><%= song.rating%></td>
     </tr>
@@ -33,13 +33,13 @@
     </tr>
   <% @artist.albums.each do | album | %>
     <tr>
-        <td><%= album.title%></td>
+        <td><%= link_to album.title%></td>
         <td><%= album.rating%></td>
     </tr>
     <%end%>
 </table>
 
 
-
+<%= link_to "Delete", admin_artist_path(@artist), method: :delete, data: { confirm: "Do you really git want to delete this artist?" } %>|
 <%= link_to 'Edit', edit_admin_artist_path(@artist) %> |
 <%= link_to 'Back', admin_artists_path %>

@@ -15,12 +15,18 @@ class Admin::ArtistsController < ApplicationController
   def create
     @artist=Artist.new(artist_params)
       if @artist.save
-          redirect_to admin_artists_path(@artist)
+          redirect_to admin_artists_path(@artist), notice: "The artist was created successfully, enjoy!"
       else
         render :new
       end
 
    end
+
+   def destroy
+    artist = Artist.find(params[:id])
+    artist.destroy
+    redirect_to admin_artists_path, notice: "The artist was successfully deleted"
+  end
 
   private
 
