@@ -2,6 +2,7 @@ class Admin::SongsController < ApplicationController
 
   def index
     @songs = Song.all
+    authorize(@songs)
   end
 
   def show

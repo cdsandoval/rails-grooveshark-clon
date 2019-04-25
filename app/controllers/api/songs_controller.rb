@@ -1,6 +1,8 @@
 class Api::SongsController < ApplicationController
   def index
-    render json: Song.all
+    songs = Song.all 
+    authorize(songs)
+    render json: songs  
   end
 
   def show
