@@ -103,3 +103,11 @@ Song.find(s23.id).artists << daddy_yankee
 Song.find(s24.id).artists << daddy_yankee
 Song.find(s25.id).artists << daddy_yankee
 Artist.find(daddy_yankee.id).albums << el_disco_duro
+
+User.delete_all
+user = User.create!(
+  email: "valevassallo1@gmail.com",
+  password: "secretin",
+  password_confirmation: "secretin",
+  role: "admin"
+)

@@ -1,4 +1,5 @@
 class Admin::SongsController < ApplicationController
+  before_action :require_auth
 
   def index
     @songs = Song.all
@@ -53,5 +54,9 @@ class Admin::SongsController < ApplicationController
 
   rescue_from ActiveRecord::RecordNotFound do |e|
     render json: { message: e.message }, status: :not_found
+  end
+
+  def require_auth
+    authorize [:admin, Song]
   end
 end
