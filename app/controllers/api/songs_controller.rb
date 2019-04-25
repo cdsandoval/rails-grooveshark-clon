@@ -1,7 +1,8 @@
 class Api::SongsController < ApplicationController
+  before_action :require_auth  
+
   def index
-    songs = Song.all 
-    authorize(songs)
+    songs = Song.all     
     render json: songs  
   end
 
@@ -65,4 +66,9 @@ class Api::SongsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound do |e|
     render json: { message: e.message }, status: :not_found
   end
+
+  def require_auth
+    authorize [:api, Song]
+  end
+
 end
