@@ -104,6 +104,7 @@ Song.find(s24.id).artists << daddy_yankee
 Song.find(s25.id).artists << daddy_yankee
 Artist.find(daddy_yankee.id).albums << el_disco_duro
 
+Rating.delete_all
 User.delete_all
 user = User.create!(
   email: "valevassallo1@gmail.com",
