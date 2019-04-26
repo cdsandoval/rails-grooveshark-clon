@@ -6,7 +6,6 @@ RSpec.describe Admin::SongsController, type: :controller do
     Song.delete_all
     @song = Song.create(  title: "How long",
                           duration: 214,
-                          rating: 0,
                           progress: 0)
   end
 
