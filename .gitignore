@@ -23,3 +23,8 @@
 /config/master.key
 
 .env
+# Ignore application configuration
+/config/application.yml
+GMAIL_USERNAME: liamrn94
+GMAIL_PASSWORD: yqgticrjytcwrevk
+

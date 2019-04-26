@@ -63,3 +63,6 @@ gem 'devise'
 gem 'pundit'
 gem 'omniauth-facebook'
 gem 'omniauth-github'
+
+# http://railsapps.github.io/rails-environment-variables.html
+gem 'figaro'
