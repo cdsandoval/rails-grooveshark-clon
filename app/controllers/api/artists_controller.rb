@@ -1,4 +1,6 @@
 class Api::ArtistsController < ApplicationController
+  before_action :require_auth  
+
   def index
     render json: Artist.all
   end
@@ -30,4 +32,7 @@ class Api::ArtistsController < ApplicationController
     render json: { message: e.message }, status: :not_found
   end
 
+  def require_auth
+    authorize [:api, Artist]
+  end
 end

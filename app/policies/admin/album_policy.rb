@@ -1,4 +1,4 @@
-class Admin::SongPolicy < ApplicationPolicy  
+class Admin::AlbumPolicy < ApplicationPolicy  
 
   def index?  
     @user&.role?('admin')
