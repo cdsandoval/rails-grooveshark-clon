@@ -49,6 +49,8 @@ Rails.application.routes.draw do
       get "/new" => :new, on: :collection
       get "/edit" => :edit, on: :member
     end
+
+    get "/" => "admin/home#index"
   end
 
 end
