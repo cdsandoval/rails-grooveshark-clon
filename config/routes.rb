@@ -50,7 +50,9 @@ Rails.application.routes.draw do
       get "/edit" => :edit, on: :member
     end
 
-    get "/" => "admin/home#index"
+    get "/home" => "home#index"
+    # get "/home" => admin_home_path
+
   end
 
 end

@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if current_user.role == "admin"
-      admin_artists_path
+      admin_home_path
     elsif current_user.role = "regular"
       root_path
     end
@@ -12,9 +12,10 @@ class ApplicationController < ActionController::Base
 
   def after_sign_up_path_for(resource)
     if current_user.role == "admin"
-      admin_artists_path
+      admin_home_path
     elsif current_user.role = "regular"
       root_path
+
     end
   end
 
