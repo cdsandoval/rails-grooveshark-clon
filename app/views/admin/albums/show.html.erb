@@ -2,10 +2,6 @@
 <% if @album.cover.attached? %>
 <%= image_tag @album.cover.variant(resize: "300x300") %>
 <% end %>
-<p>
-  <strong>Rating:</strong>
-  <%= @album.rating %>
-</p>
 
 
 <h2>Songs</h2>
