@@ -48,7 +48,8 @@ class Admin::SongsController < ApplicationController
       :title,
       :duration,
       :rating,
-      :progress
+      :progress,
+      :cover
     )
   end
 
