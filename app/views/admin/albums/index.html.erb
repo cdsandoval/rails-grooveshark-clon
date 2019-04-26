@@ -1,23 +1,23 @@
 <h1>List of Albums</h1>
 <table>
-    <tr>
-        <thead>
-            <th>Title</th>
-            
-        </thead>
-    </tr>
-    <%@albums.each do |album| %>
-    <tr>
-        <td><%= album.title%></td>
-        
-        <td>
-            <%= link_to "Details", admin_album_path(album) %>
-            <%= link_to "Update", edit_admin_album_path(album)%>
-            <%= link_to "Delete", admin_album_path(album), method: :delete, data: { confirm: "Really delete this album?" } %>
-        </td>
-    </tr>
-    <%end%>
+  <tr>
+    <thead>
+      <th>Title</th> 
+    </thead>
+  </tr>
+  <%@albums.each do |album| %>
+  <tr>
+    <td><%= album.title%></td>
+    
+    <td>
+      <%= link_to "Details", admin_album_path(album) %>
+      <%= link_to "Update", edit_admin_album_path(album)%>
+      <%= link_to "Delete", admin_album_path(album), method: :delete, data: { confirm: "Really delete this album?" } %>
+    </td>
+  </tr>
+  <%end%>
 </table>
 
+<%= link_to 'New Album', new_admin_album_path %> |
 
-<%= link_to 'New Album', new_admin_album_path %>
+<%= link_to 'Home', admin_home_path %>
