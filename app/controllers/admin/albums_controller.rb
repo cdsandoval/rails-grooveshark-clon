@@ -15,6 +15,7 @@ class Admin::AlbumsController < ApplicationController
   def create
     @album = Album.new(album_params)
     if @album.save
+      AlbumMailer.with(user: current_user, album: @album).album_created.deliver_now
       redirect_to admin_albums_path, notice: 'Album was successfully created.'
     else
       render :new
