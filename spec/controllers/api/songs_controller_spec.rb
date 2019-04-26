@@ -8,21 +8,18 @@ RSpec.describe Api::SongsController, type: :controller do
     Album.delete_all
     @song1 = Song.create( title: "How long",
                           duration: 214,
-                          rating: 0,
                           progress: 0)
-    @album1 = Album.create( title: "Nuevo album",
-                            rating: 0)
+    @album1 = Album.create( title: "Nuevo album"
+                            )
     @artist1 = Artist.create(  name: "Juanes",
                               age: "35")
     @song1.albums << @album1
     @song1.artists << @artist1
     @song2 = Song.create( title: "You have done for me",
                           duration: 267,
-                          rating: 0,
                           progress: 0)
     @song3 = Song.create( title: "The long son",
                           duration: 273,
-                          rating: 0,
                           progress: 0)
   end
 
@@ -137,31 +134,31 @@ RSpec.describe Api::SongsController, type: :controller do
     end
   end
 
-  describe 'PUT rating' do
-    it 'returns http status ok' do
-      get :song_rating, params: { id: @song1.id, rating: 1 }
-      expect(response).to have_http_status(:ok)
-    end
+  # describe 'PUT rating' do
+  #   it 'returns http status ok' do
+  #     get :song_rating, params: { id: @song1.id, rating: 1 }
+  #     expect(response).to have_http_status(:ok)
+  #   end
 
-    it 'returns http status bad request' do
-      get :song_rating, params: { id: @song1.id, rating: 20 }
-      expected_song = JSON.parse(response.body)
-      expect(response).to have_http_status(:bad_request)
-      expect(expected_song["message"]).to eq("The value of rating has to be -1, 0 or 1")
-    end
+  #   it 'returns http status bad request' do
+  #     get :song_rating, params: { id: @song1.id, rating: 20 }
+  #     expected_song = JSON.parse(response.body)
+  #     expect(response).to have_http_status(:bad_request)
+  #     expect(expected_song["message"]).to eq("The value of rating has to be -1, 0 or 1")
+  #   end
 
-    it 'returns http status bad request when the name of parameter is not rating' do
-      get :song_rating, params: { id: @song1.id, ratin: 100 }
-      expected_song = JSON.parse(response.body)
-      expect(response).to have_http_status(:bad_request)
-      expect(expected_song["message"]).to eq("This request has to have the parameters id and rating")
-    end
+  #   it 'returns http status bad request when the name of parameter is not rating' do
+  #     get :song_rating, params: { id: @song1.id, ratin: 100 }
+  #     expected_song = JSON.parse(response.body)
+  #     expect(response).to have_http_status(:bad_request)
+  #     expect(expected_song["message"]).to eq("This request has to have the parameters id and rating")
+  #   end
 
-    it 'returns a message from updated song' do
-      get :song_rating, params: { id: @song1.id, rating: -1 }
-      expected_song = JSON.parse(response.body)
-      expect(expected_song["message"]).to eq("Update successfully rating song")
-    end
-  end
+  #   it 'returns a message from updated song' do
+  #     get :song_rating, params: { id: @song1.id, rating: -1 }
+  #     expected_song = JSON.parse(response.body)
+  #     expect(expected_song["message"]).to eq("Update successfully rating song")
+  #   end
+  # end
 
 end

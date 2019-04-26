@@ -8,10 +8,9 @@ RSpec.describe Api::AlbumsController, type: :controller do
     Artist.delete_all
     @song1 = Song.create( title: "How long",
                           duration: 214,
-                          rating: 0,
                           progress: 0)
-    @album1 = Album.create( title: "Nuevo album",
-                            rating: 0)
+    @album1 = Album.create( title: "Nuevo album"
+                            )
     @artist1 = Artist.create(  name: "Juanes",
                               age: "35")
     @album1.songs << @song1
@@ -19,10 +18,9 @@ RSpec.describe Api::AlbumsController, type: :controller do
 
     @song2 = Song.create( title: "You have done for me",
                           duration: 267,
-                          rating: 0,
                           progress: 0)
-    @album2 = Album.create( title: "Nuevo album2",
-                            rating: 0)
+    @album2 = Album.create( title: "Nuevo album2"
+                            )
     @artist2 = Artist.create(  name: "Shakira",
                               age: "46")
     @album2.songs << @song2
@@ -30,7 +28,6 @@ RSpec.describe Api::AlbumsController, type: :controller do
 
     @song3 = Song.create( title: "The long son",
                           duration: 273,
-                          rating: 0,
                           progress: 0)
   end
 
@@ -118,31 +115,31 @@ RSpec.describe Api::AlbumsController, type: :controller do
     end
   end
 
-  describe 'PUT rating' do
-    it 'returns http status ok' do
-      get :album_rating, params: { id: @album1.id, rating: 1 }
-      expect(response).to have_http_status(:ok)
-    end
+  # describe 'PUT rating' do
+  #   it 'returns http status ok' do
+  #     get :album_rating, params: { id: @album1.id, rating: 1 }
+  #     expect(response).to have_http_status(:ok)
+  #   end
 
-    it 'returns http status bad request' do
-      get :album_rating, params: { id: @album1.id, rating: 20 }
-      expected_album = JSON.parse(response.body)
-      expect(response).to have_http_status(:bad_request)
-      expect(expected_album["message"]).to eq("The value of rating has to be -1, 0 or 1")
-    end
+  #   it 'returns http status bad request' do
+  #     get :album_rating, params: { id: @album1.id, rating: 20 }
+  #     expected_album = JSON.parse(response.body)
+  #     expect(response).to have_http_status(:bad_request)
+  #     expect(expected_album["message"]).to eq("The value of rating has to be -1, 0 or 1")
+  #   end
 
-    it 'returns http status bad request when the name of parameter is not rating' do
-      get :album_rating, params: { id: @album1.id, ratin: 100 }
-      expected_album = JSON.parse(response.body)
-      expect(response).to have_http_status(:bad_request)
-      expect(expected_album["message"]).to eq("This request has to have the parameters id and rating")
-    end
+  #   it 'returns http status bad request when the name of parameter is not rating' do
+  #     get :album_rating, params: { id: @album1.id, ratin: 100 }
+  #     expected_album = JSON.parse(response.body)
+  #     expect(response).to have_http_status(:bad_request)
+  #     expect(expected_album["message"]).to eq("This request has to have the parameters id and rating")
+  #   end
 
-    it 'returns a message from updated album' do
-      get :album_rating, params: { id: @album1.id, rating: -1 }
-      expected_album = JSON.parse(response.body)
-      expect(expected_album["message"]).to eq("Update successfully rating album")
-    end
-  end
+  #   it 'returns a message from updated album' do
+  #     get :album_rating, params: { id: @album1.id, rating: -1 }
+  #     expected_album = JSON.parse(response.body)
+  #     expect(expected_album["message"]).to eq("Update successfully rating album")
+  #   end
+  # end
 
 end
