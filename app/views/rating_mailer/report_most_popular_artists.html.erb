@@ -1,0 +1,9 @@
+<h1>Hi <%= @user.email %></h1>
+<p>
+  These are the most popular artists:
+  <ul>
+    <% @artists.each do |artist| %>
+    <li><%= artist.name %></li>
+    <% end %>
+  </ul>
+</p>
