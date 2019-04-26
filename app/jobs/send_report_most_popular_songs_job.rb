@@ -12,6 +12,6 @@ class SendReportMostPopularSongsJob < ApplicationJob
   end
 
   def reschedule_job
-    self.class.set(wait: 2.minutes).perform_later
+    self.class.set(wait_until: Date.tomorrow.noon).perform_later
   end
 end
