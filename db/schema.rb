@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2019_04_25_223355) do
+=======
+ActiveRecord::Schema.define(version: 2019_04_25_215753) do
+>>>>>>> feaa5673ded41b46ee72f8292fdda0d78caaf462
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +51,15 @@ ActiveRecord::Schema.define(version: 2019_04_25_223355) do
     t.index ["ratingable_type", "ratingable_id"], name: "index_ratings_on_ratingable_type_and_ratingable_id"
     t.index ["user_id"], name: "index_ratings_on_user_id"
   end
+  
+  create_table "providers", force: :cascade do |t|
+    t.string "name"
+    t.string "uid"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_providers_on_user_id"
+  end
 
   create_table "songs", force: :cascade do |t|
     t.string "title"
@@ -72,5 +85,9 @@ ActiveRecord::Schema.define(version: 2019_04_25_223355) do
   add_foreign_key "associations", "albums"
   add_foreign_key "associations", "artists"
   add_foreign_key "associations", "songs"
+<<<<<<< HEAD
   add_foreign_key "ratings", "users"
+=======
+  add_foreign_key "providers", "users"
+>>>>>>> feaa5673ded41b46ee72f8292fdda0d78caaf462
 end

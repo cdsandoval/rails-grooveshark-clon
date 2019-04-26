@@ -108,7 +108,8 @@ User.delete_all
 user = User.create!(
   email: "valevassallo1@gmail.com",
   password: "secretin",
-  password_confirmation: "secretin"
+  password_confirmation: "secretin",
+  role: "admin"
 )
 
 
