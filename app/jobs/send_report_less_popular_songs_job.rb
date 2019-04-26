@@ -1,12 +1,12 @@
-class SendReportMostPopularArtistsJob < ApplicationJob
+class SendReportLessPopularSongsJob < ApplicationJob
   queue_as :default
 
   def perform
     reschedule_job
-    User.all.each do |user|
+    User.where(role: "admin").each do |user|
       RatingMailer
         .with(user: user)
-        .report_most_popular_artists  
+        .report_less_popular_songs
         .deliver_later
     end
   end
