@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-  root to: "home#index"
+  root "home#index"
 
   namespace :api do
     resources :artists, only: [ :index, :show] do
@@ -50,7 +50,9 @@ Rails.application.routes.draw do
       get "/edit" => :edit, on: :member
     end
 
-    get "/" => "admin/home#index"
+    get "/home" => "home#index"
+    # get "/home" => admin_home_path
+
   end
 
 end
