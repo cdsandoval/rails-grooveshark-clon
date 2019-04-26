@@ -1,0 +1,14 @@
+<h1>Hi <%= @user.email %></h1>
+<p>
+  A new album has been successfully created. The data of the album is:
+  <dl>
+    <dt>Title</dt>
+    <dd><%= @album.title %></dd>
+    <dt>Body</dt>
+    <dd><%= @album.body %></dd>
+  </dl>
+</p>
+<p>
+  If you want to read this album, go to <%= album_url(@album) %>
+</p>
+<p>Have a great day!</p>

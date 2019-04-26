@@ -1,0 +1,14 @@
+<h1>Hi <%= @user.email %></h1>
+<p>
+  A new artist has been successfully created. The data of the artist is:
+  <dl>
+    <dt>Title</dt>
+    <dd><%= @artist.title %></dd>
+    <dt>Body</dt>
+    <dd><%= @artist.body %></dd>
+  </dl>
+</p>
+<p>
+  If you want to read this artist, go to <%= artist_url(@artist) %>
+</p>
+<p>Have a great day!</p>
