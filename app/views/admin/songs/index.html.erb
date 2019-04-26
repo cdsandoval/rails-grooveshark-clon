@@ -1,27 +1,27 @@
 <h1>List of songs</h1>
 <table>
-    <tr>
-        <thead>
-            <th>Title</th>
-            <th>Duration</th>
-            <th>Progress</th>
+  <tr>
+    <thead>
+      <th>Title</th>
+      <th>Duration</th>
+      <th>Progress</th>
 
-            <th>Actions</th>
-        </thead>
-    </tr>
-    <%@songs.each do |song| %>
-    <tr>
-        <td><%= song.title%></td>
-        <td><%= song.duration%></td>
-        <td><%= song.progress%></td>
-        
-        <td>
-            <%= link_to "Details", admin_song_path(song) %>
-            <%= link_to "Update", edit_admin_song_path(song)%>
-            <%= link_to "Delete", admin_song_path(song), method: :delete, data: { confirm: "Really delete this song?" } %>
-        </td>
-    </tr>
-    <%end%>
+      <th>Actions</th>
+    </thead>
+  </tr>
+  <%@songs.each do |song| %>
+  <tr>
+      <td><%= song.title%></td>
+      <td><%= song.duration%></td>
+      <td><%= song.progress%></td>
+      
+      <td>
+        <%= link_to "Details", admin_song_path(song) %>
+        <%= link_to "Update", edit_admin_song_path(song)%>
+        <%= link_to "Delete", admin_song_path(song), method: :delete, data: { confirm: "Really delete this song?" } %>
+      </td>
+  </tr>
+  <%end%>
 </table>
 
 
