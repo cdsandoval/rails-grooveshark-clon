@@ -1,4 +1,7 @@
 <h1>Artist: <%= @artist.name %></h1>
+<% if @artist.cover.attached? %>
+<%= image_tag @artist.cover.variant(resize: "300x300") %>
+<% end %>
 <p>
   <strong>Age:</strong>
   <%= @artist.age %>
