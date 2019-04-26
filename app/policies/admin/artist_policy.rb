@@ -1,4 +1,4 @@
-class Admin::SongPolicy < ApplicationPolicy  
+class Admin::ArtistPolicy < ApplicationPolicy  
 
   def index?  
     @user&.role?('admin')
@@ -12,11 +12,11 @@ class Admin::SongPolicy < ApplicationPolicy
     @user&.role?('admin')
   end
 
-  def create?  
+  def edit?  
     @user&.role?('admin')
   end
 
-  def edit?  
+  def create?  
     @user&.role?('admin')
   end
 
