@@ -10,8 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_25_215919) do
 
+ActiveRecord::Schema.define(version: 2019_04_25_223355) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -38,7 +38,6 @@ ActiveRecord::Schema.define(version: 2019_04_25_215919) do
 
   create_table "albums", force: :cascade do |t|
     t.string "title"
-    t.integer "rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -59,10 +58,29 @@ ActiveRecord::Schema.define(version: 2019_04_25_215919) do
     t.index ["song_id"], name: "index_associations_on_song_id"
   end
 
+  create_table "providers", force: :cascade do |t|
+    t.string "name"
+    t.string "uid"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_providers_on_user_id"
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.string "ratingable_type"
+    t.bigint "ratingable_id"
+    t.bigint "user_id"
+    t.integer "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ratingable_type", "ratingable_id"], name: "index_ratings_on_ratingable_type_and_ratingable_id"
+    t.index ["user_id"], name: "index_ratings_on_user_id"
+  end
+
   create_table "songs", force: :cascade do |t|
     t.string "title"
     t.integer "duration"
-    t.integer "rating"
     t.integer "progress"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -76,7 +94,7 @@ ActiveRecord::Schema.define(version: 2019_04_25_215919) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "role"
+    t.string "role", default: "regular"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -85,4 +103,6 @@ ActiveRecord::Schema.define(version: 2019_04_25_215919) do
   add_foreign_key "associations", "albums"
   add_foreign_key "associations", "artists"
   add_foreign_key "associations", "songs"
+  add_foreign_key "providers", "users"
+  add_foreign_key "ratings", "users"
 end

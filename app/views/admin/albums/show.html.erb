@@ -7,13 +7,14 @@
   <%= @album.rating %>
 </p>
 
+
 <h2>Songs</h2>
 <table>
     <tr>
         <thead>
             <th>Title</th>
             <th>Duration</th>
-            <th>Rating</th>
+            
             <th>Progress</th>
         </thead>
     </tr>
@@ -21,7 +22,7 @@
     <tr>
         <td><%= song.title%></td>
         <td><%= song.duration%></td>
-        <td><%= song.rating%></td>
+        
         <td><%= song.progress%></td>
     </tr>
     <%end%>

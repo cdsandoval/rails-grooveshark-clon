@@ -4,8 +4,8 @@ RSpec.describe Admin::AlbumsController, type: :controller do
 
   before do
     Album.delete_all
-    @album1 = Album.create( title: "Nuevo album",
-                            rating: 0)
+    @album1 = Album.create( title: "Nuevo album"
+                            )
   end
 
   describe "GET index" do

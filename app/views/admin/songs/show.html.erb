@@ -29,13 +29,13 @@
     <tr>
         <thead>
             <th>Title</th>
-            <th>Rating</th>
+            
         </thead>
     </tr>
   <% @song.albums.each do | album | %>
     <tr>
         <td><%= album.title%></td>
-        <td><%= album.rating%></td>
+        
     </tr>
     <%end%>
 </table>
