@@ -58,6 +58,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'active_model_serializers'
 gem 'faker'
+gem 'mini_magick', '~> 4.8'
 
 gem 'devise'
 gem 'pundit'
