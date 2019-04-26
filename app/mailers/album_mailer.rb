@@ -1,0 +1,2 @@
+class AlbumMailer < ApplicationMailer
+end

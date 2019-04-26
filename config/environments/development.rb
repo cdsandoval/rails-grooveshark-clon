@@ -31,7 +31,7 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = true 
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = false
 
@@ -52,9 +52,6 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  #Devise
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-
   # ActionMailer config
 config.action_mailer.delivery_method = :smtp
 config.action_mailer.smtp_settings =
@@ -62,13 +59,13 @@ config.action_mailer.smtp_settings =
     address: 'smtp.gmail.com',
     port: 587,
     domain: 'gmail.com',
-    # user_name: liamrn94,
-    # password: yqgticrjytcwrevk,
-    user_name: ENV["GMAIL_USERNAME"],
-    password: ENV["GMAIL_PASSWORD"],
-    # user_name: Figaro.env.gmail_username
-    # password: Figaro.env.gmail_password
-    # authentication: 'plain',
+    user_name: 'liamrn94',
+    password: 'yqgticrjytcwrevk',
+    authentication: 'plain',
     enable_starttls_auto: true
   }
+
+  #Devise
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.active_storage.service = :local
 end
