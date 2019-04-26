@@ -5,7 +5,7 @@
             <th>Title</th>
             <th>Duration</th>
             <th>Progress</th>
-            <th>Rating</th>
+
             <th>Actions</th>
         </thead>
     </tr>
@@ -14,7 +14,7 @@
         <td><%= song.title%></td>
         <td><%= song.duration%></td>
         <td><%= song.progress%></td>
-        <td><%= song.rating%></td>
+        
         <td>
             <%= link_to "Details", admin_song_path(song) %>
             <%= link_to "Update", edit_admin_song_path(song)%>
