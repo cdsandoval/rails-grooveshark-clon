@@ -1,4 +1,4 @@
-class SendReportMostPopularAlbumsJob < ApplicationJob
+class SendReportMostPopularArtistsJob < ApplicationJob
   queue_as :default
 
   def perform
@@ -6,7 +6,7 @@ class SendReportMostPopularAlbumsJob < ApplicationJob
     User.all.each do |user|
       RatingMailer
         .with(user: user)
-        .report_most_popular_albums
+        .report_most_popular_artists
         .deliver_later
     end
   end
