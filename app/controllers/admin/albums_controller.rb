@@ -15,7 +15,6 @@ class Admin::AlbumsController < ApplicationController
   def create
     @album = Album.new(album_params)
     if @album.save
-      AlbumMailer.with(user: current_user, album: @album).album_created.deliver_now
       redirect_to admin_albums_path, notice: 'Album was successfully created.'
     else
       render :new
@@ -45,6 +44,9 @@ class Admin::AlbumsController < ApplicationController
     album = Album.find(params[:album_id])
     artist = Artist.find(params[:artist_id])
     album.artists << artist
+    if artist.albums.count() == 1
+      SendArtistAddNotificationJob.perform_later artist
+    end
     redirect_to edit_admin_album_path(album)
   end
 

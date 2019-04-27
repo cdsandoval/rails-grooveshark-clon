@@ -9,4 +9,9 @@ class UserMailer < ApplicationMailer
     @songs = Song.joins(:ratings).group('songs.id').order('COUNT(ratings.id) DESC').limit(3)
     mail(to: @user.email, subject: "Welcome #{@user.email} to GrooveShark!")
   end
+
+  # def A 
+  #   @user = params[:user]
+
+  # end
 end
