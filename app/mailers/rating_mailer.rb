@@ -24,4 +24,10 @@ class RatingMailer < ApplicationMailer
       @songs = Song.joins(:ratings).group('songs.id').order('COUNT(ratings.id) ASC').limit(3)
       mail(to: @user.email, subject: 'Most Popular Songs')
     end
+
+    def report_most_rated_songs
+      @user = params[:user]
+      @songs = Song.joins(:ratings).group('songs.id').order('SUM(ratings.value) DESC').limit(3)
+      mail(to: @user.email, subject: 'Most Rated Songs')
+    end
   end
