@@ -1,15 +1,18 @@
 <p>prueba!</p>
 <h1>Hi <%= @user.email %></h1>
 <p>
-  A new artist has been successfully created.The data of the artist is:
-  <dl>
-    <dt>Name</dt>
-    <dd><%= @album.artists.first.name %></dd>
-    <dt>Age</dt>
-    <dd><%= @album.artists.first.age %></dd>
-  </dl>
-</p>
-<p>
-  If you want to look this artist up, go to <%= admin_artist_url(@album.artists.first) %>
+  A new artist has been successfully created.
+  <% if @album.artists.any? %>
+    The data of the artist is:
+    <dl>
+      <dt>Name</dt>
+      <dd><%= @album.artists.first.name %></dd>
+      <dt>Age</dt>
+      <dd><%= @album.artists.first.age %></dd>
+      <dd> If you want to look this artist up, go to <%= admin_artist_url(@album.artists.first) %> </dd>
+    </dl>
+  <% end %>
+  
+
 </p>
 <p>Have a great day!</p>
