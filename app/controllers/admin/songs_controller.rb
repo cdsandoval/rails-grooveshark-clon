@@ -45,8 +45,11 @@ class Admin::SongsController < ApplicationController
 
   def add_album
     song = Song.find(params[:song_id])
-    album = Album.find(params[:album_id])
-    song.albums << album
+    if params.key?("album_id")
+      album = Album.find(params[:album_id])
+      song.albums << album
+      
+    end
     redirect_to edit_admin_song_path(song)
   end
 

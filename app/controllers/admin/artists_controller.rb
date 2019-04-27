@@ -20,7 +20,6 @@ class Admin::ArtistsController < ApplicationController
   def create
     @artist = Artist.new(artist_params)
       if @artist.save
-          ArtistMailer.with(user: current_user, artist: @artist).artist_created.deliver_now
           redirect_to admin_artists_path(@artist), notice: "The artist was created successfully, enjoy!"
       else
         render :new
