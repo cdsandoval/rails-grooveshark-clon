@@ -20,7 +20,7 @@ class User < ApplicationRecord
 
   def send_registration_mail
     User.where(role: "admin").each do |user|
-    UserMailer.with(user: user) .user_created.deliver_now
+      UserMailer.with(user: user) .user_created.deliver_later
     end
   end
 
