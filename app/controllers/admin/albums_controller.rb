@@ -14,15 +14,15 @@ class Admin::AlbumsController < ApplicationController
 
   def create
     @album = Album.new(album_params)
-    # @artist = Artist.find(params[:artist_id])
     if @album.save
-      # if @artist.albums.count() == 1
-      SendAlbumCreatedNotificationJob.perform_later @album
-      # end
+      creator = @album.artists.first 
+      if creator.albums.count == 1 
+        SendAlbumCreatedNotificationJob.perform_now @album
+      end
       redirect_to admin_albums_path, notice: 'Album was successfully created.'
     else
       render :new
-    end
+    end    
   end
 
   def edit
@@ -30,7 +30,7 @@ class Admin::AlbumsController < ApplicationController
   end
 
   def update
-    @album = Album.find(params[:id])
+    @album = Album.find(params[:id])   
     if @album.update(album_params)
       redirect_to admin_album_path(@album), notice: "This song was updated!"
     else
@@ -58,9 +58,11 @@ class Admin::AlbumsController < ApplicationController
     params.require(:album).permit(
       :title,
       :rating,
-      :cover
+      :cover,
+      :artist_ids
     )
   end
+
 
   rescue_from ActiveRecord::RecordNotFound do |e|
     render json: { message: e.message }, status: :not_found

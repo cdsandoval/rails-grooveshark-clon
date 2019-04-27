@@ -114,6 +114,14 @@ user = User.create!(
 )
 
 
+user = User.create!(
+  email: "ry.yrupailla@gmail.com",
+  password: "secretin",
+  password_confirmation: "secretin",
+  role: "admin"
+)
+
+
 p "Seed Data Created"
 
 s1.ratings.create(user_id: 1, value: -1)
