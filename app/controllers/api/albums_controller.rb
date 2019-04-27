@@ -1,4 +1,6 @@
 class Api::AlbumsController < ApplicationController
+  before_action :require_auth 
+  
   def index
     albums = Album.order('created_at DESC');
     render json: albums
@@ -47,5 +49,9 @@ class Api::AlbumsController < ApplicationController
   
   rescue_from ActiveRecord::RecordNotFound do |e|
     render json: { message: e.message }, status: :not_found
+  end
+
+  def require_auth
+    authorize [:api, Album]
   end
 end

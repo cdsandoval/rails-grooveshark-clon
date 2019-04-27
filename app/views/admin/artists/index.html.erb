@@ -1,24 +1,26 @@
 <h1>List of artists</h1>
 <table>
-    <tr>
-        <thead>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Actions</th>
-        </thead>
-    </tr>
-    <%@artists.each do |artist| %>
-    <tr>
-        <td><%= artist.name%></td>
-        <td><%= artist.age%></td>
-        <td>
-            <%= link_to "Details", admin_artist_path(artist) %>
-            <%= link_to "Update", edit_admin_artist_path(artist)%>
-            <%= link_to "Delete", admin_artist_path(artist), method: :delete, data: { confirm: "Really delete this artist?" } %>
-        </td>
-    </tr>
-    <%end%>
+  <tr>
+    <thead>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Actions</th>
+    </thead>
+  </tr>
+  <%@artists.each do |artist| %>
+  <tr>
+    <td><%= artist.name%></td>
+    <td><%= artist.age%></td>
+    <td>
+      <%= link_to "Details", admin_artist_path(artist) %>
+      <%= link_to "Update", edit_admin_artist_path(artist)%>
+      <%= link_to "Delete", admin_artist_path(artist), method: :delete, data: { confirm: "Really delete this artist?" } %>
+    </td>
+  </tr>
+  <%end%>
 </table>
 
 
-<%= link_to 'New Artist', new_admin_artist_path %>
+<%= link_to 'New Artist', new_admin_artist_path %> |
+
+<%= link_to 'Home', admin_home_path %>

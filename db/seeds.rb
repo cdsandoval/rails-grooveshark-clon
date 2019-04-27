@@ -116,4 +116,19 @@ user = User.create!(
 
 p "Seed Data Created"
 
-s1.ratings << Rating.create(user_id: 1, value: 1)
+s1.ratings.create(user_id: 1, value: -1)
+s1.ratings.create(user_id: 1, value: -1)
+s1.ratings.create(user_id: 1, value: -1)
+s1.ratings.create(user_id: 1, value: 1)
+
+s2.ratings.create(user_id: 1, value: 1)
+s2.ratings.create(user_id: 1, value: 1)
+s2.ratings.create(user_id: 1, value: 1)
+s2.ratings.create(user_id: 1, value: 1)
+
+s3.ratings.create(user_id: 1, value: 1)
+s3.ratings.create(user_id: 1, value: 1)
+s3.ratings.create(user_id: 1, value: 1)
+
+s4.ratings.create(user_id: 1, value: 1)
+s4.ratings.create(user_id: 1, value: 1)

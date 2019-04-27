@@ -1,5 +1,5 @@
 class Admin::AlbumsController < ApplicationController
-
+  before_action :require_auth 
   def index
     @albums = Album.all
   end
@@ -60,5 +60,9 @@ class Admin::AlbumsController < ApplicationController
 
   rescue_from ActiveRecord::RecordNotFound do |e|
     render json: { message: e.message }, status: :not_found
+  end
+
+  def require_auth
+    authorize [:admin, Album]
   end
 end

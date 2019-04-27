@@ -2,6 +2,8 @@ class Admin::SongsController < ApplicationController
   before_action :require_auth
 
   def index
+    # Just for testing
+    # SendReportMostPopularSongsJob.perform_later
     @songs = Song.all
   end
 

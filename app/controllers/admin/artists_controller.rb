@@ -1,5 +1,6 @@
 class Admin::ArtistsController < ApplicationController
-
+  before_action :require_auth 
+  
   def index
     @artists = Artist.all
   end
@@ -45,5 +46,9 @@ class Admin::ArtistsController < ApplicationController
 
   def artist_params
     params.require(:artist).permit(:name, :age,:cover)
+  end
+
+  def require_auth
+    authorize [:admin, Artist]
   end
 end

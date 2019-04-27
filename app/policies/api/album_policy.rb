@@ -1,4 +1,4 @@
-class Api::SongPolicy < ApplicationPolicy  
+class Api::AlbumPolicy < ApplicationPolicy  
 
   def index?  
     @user
@@ -16,15 +16,12 @@ class Api::SongPolicy < ApplicationPolicy
     @user
   end
 
-  def albums?  
+  def songs?  
     @user
   end
 
-  def song_progress?  
+  def album_rating?  
     @user
   end
 
-  def song_rating?  
-    @user
-  end
 end 
