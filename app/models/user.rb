@@ -33,7 +33,6 @@ class User < ApplicationRecord
   end
   
   def welcome
-    
     UserMailer.with(user: self).user_welcoming.deliver_now
   end
 end
