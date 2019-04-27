@@ -14,12 +14,25 @@
     <%= f.text_field :title %>
   </div>
 
-
-
   <p>
     <%= f.label :cover %><br />
     <%= f.file_field :cover %>
   </p>
+
+  <p>Artists</p>
+
+  <form action="/admin/add_artist_album" method="post">
+    <select name="artist_id">
+      <option selected disabled>Select one artist</option>
+      <% Artist.all.each do |artist_option| %>
+        <% if @album.artists.where(id: artist_option.id).count == 0 %>
+          <option value="<%=artist_option.id%>"><%=artist_option.name%></option>
+        <%end%>
+      <%end%>
+    </select>
+    <input type="hidden" name="album_id" value="<%=@album.id%>">
+    <input type="submit" value="Add">
+  </form>
 
   <div class="actions">
     <%= f.submit %>

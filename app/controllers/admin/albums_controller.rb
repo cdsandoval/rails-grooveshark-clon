@@ -41,6 +41,13 @@ class Admin::AlbumsController < ApplicationController
     redirect_to admin_albums_path, notice: "The song was successfully deleted"
   end
 
+  def add_artist
+    album = Album.find(params[:album_id])
+    artist = Artist.find(params[:artist_id])
+    album.artists << artist
+    redirect_to edit_admin_album_path(album)
+  end
+
   private
 
   def album_params

@@ -53,6 +53,8 @@ Rails.application.routes.draw do
     get "/home" => "home#index"
     # get "/home" => admin_home_path
 
+  post "/add_artist_album", to: "albums#add_artist"
+  post "/add_album_song", to: "songs#add_album"
   end
 
 end
