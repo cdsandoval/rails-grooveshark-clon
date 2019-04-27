@@ -14,7 +14,11 @@ class Admin::AlbumsController < ApplicationController
 
   def create
     @album = Album.new(album_params)
+    # @artist = Artist.find(params[:artist_id])
     if @album.save
+      # if @artist.albums.count() == 1
+      SendAlbumCreatedNotificationJob.perform_later @album
+      # end
       redirect_to admin_albums_path, notice: 'Album was successfully created.'
     else
       render :new
@@ -42,11 +46,9 @@ class Admin::AlbumsController < ApplicationController
 
   def add_artist
     album = Album.find(params[:album_id])
-    artist = Artist.find(params[:artist_id])
-    album.artists << artist
-    if artist.albums.count() == 1
-      SendArtistAddNotificationJob.perform_later artist
-    end
+    @artist = Artist.find(params[:artist_id])
+    @album.artists << artist
+    
     redirect_to edit_admin_album_path(album)
   end
 

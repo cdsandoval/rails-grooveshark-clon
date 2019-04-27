@@ -4,9 +4,9 @@ Prueba
 
 A new artist has been successfully created. The data of the artist is:
 
-- **Name**: <%= @artist.name %>
-- **Age**: <%= @artist.age %>
+- **Name**: <%= @album.artists.first.name %>
+- **Age**: <%= @album.artists.first.age %>
 
-If you want to read this artist, go to <%= admin_artist_url(@artist) %>
+If you want to read this artist, go to <%= admin_artist_url(@album.artists.first) %>
 
 Have a great day!
