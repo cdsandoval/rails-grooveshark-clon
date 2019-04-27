@@ -24,12 +24,12 @@ class RatingMailer < ApplicationMailer
     end
 
     def report_most_popular_albums
-      @albums = Album.joins(:ratings).group('album.id').order('COUNT(ratings.id) DESC').limit(3)
+      @albums = Album.joins(:ratings).group('albums.id').order('COUNT(ratings.id) DESC').limit(3)
       new_data = @albums.reduce(""){ | str, album | "#{str},#{album.id}"}
       unless $most_popular_albums && $most_popular_albums == new_data
         $most_popular_albums = new_data
         @user = params[:user]
-        @albums = Album.joins(:ratings).group('album.id').order('COUNT(ratings.id) DESC').limit(3)
+        @albums = Album.joins(:ratings).group('albums.id').order('COUNT(ratings.id) DESC').limit(3)
         mail(to: @user.email, subject: 'Most Popular Albums')
       end
     end

@@ -121,14 +121,33 @@ s1.ratings.create(user_id: 1, value: -1)
 s1.ratings.create(user_id: 1, value: -1)
 s1.ratings.create(user_id: 1, value: 1)
 
-s2.ratings.create(user_id: 1, value: 1)
-s2.ratings.create(user_id: 1, value: 1)
-s2.ratings.create(user_id: 1, value: 1)
-s2.ratings.create(user_id: 1, value: 1)
+s6.ratings.create(user_id: 1, value: 1)
+s6.ratings.create(user_id: 1, value: 1)
+s6.ratings.create(user_id: 1, value: 1)
+s6.ratings.create(user_id: 1, value: 1)
 
-s3.ratings.create(user_id: 1, value: 1)
-s3.ratings.create(user_id: 1, value: 1)
-s3.ratings.create(user_id: 1, value: 1)
+s16.ratings.create(user_id: 1, value: 1)
+s16.ratings.create(user_id: 1, value: 1)
+s16.ratings.create(user_id: 1, value: 1)
 
-s4.ratings.create(user_id: 1, value: 1)
-s4.ratings.create(user_id: 1, value: 1)
+s21.ratings.create(user_id: 1, value: 1)
+s21.ratings.create(user_id: 1, value: 1)
+
+Album.first.ratings.create(user_id: 1, value: 1)
+Album.first.ratings.create(user_id: 1, value: 1)
+
+Album.second.ratings.create(user_id: 1, value: 1)
+Album.second.ratings.create(user_id: 1, value: 1)
+Album.second.ratings.create(user_id: 1, value: 1)
+Album.second.ratings.create(user_id: 1, value: 1)
+Album.second.ratings.create(user_id: 1, value: 1)
+
+Album.third.ratings.create(user_id: 1, value: 1)
+Album.third.ratings.create(user_id: 1, value: 1)
+Album.third.ratings.create(user_id: 1, value: 1)
+
+Album.fourth.ratings.create(user_id: 1, value: 1)
+Album.fourth.ratings.create(user_id: 1, value: 1)
+Album.fourth.ratings.create(user_id: 1, value: 1)
+Album.fourth.ratings.create(user_id: 1, value: 1)
+
