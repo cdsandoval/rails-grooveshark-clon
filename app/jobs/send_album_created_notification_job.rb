@@ -1,4 +1,4 @@
-class SendArtistAddNotificationJob < ApplicationJob
+class SendAlbumCreatedNotificationJob < ApplicationJob
   queue_as :default
 
   def perform(album)
@@ -6,7 +6,7 @@ class SendArtistAddNotificationJob < ApplicationJob
       AlbumMailer
       .with(user: user, album: album)
       .album_created
-      .delivery_later
+      .deliver_later
     end
   end
 end

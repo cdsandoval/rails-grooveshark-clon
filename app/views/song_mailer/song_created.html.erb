@@ -1,0 +1,15 @@
+<h1>Hi <%= @user.email %>!!</h1>
+<p>
+  A new album has been successfully created.
+  <% if @song.albums.any? %>
+    The data of the album is:
+    <dl>
+      <dt>Title</dt>
+      <dd><%= @song.albums.first.title %></dd>
+      <dt>Duration</dt>
+      <dd><%= @song.albums.first.duration %></dd>
+      <dd> If you want to look this album up, go to <%= admin_album_url(@song.albums.first) %> </dd>
+    </dl>
+    <% end %>
+</p>
+<p>Have a nice day!</p>
