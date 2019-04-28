@@ -1,6 +1,9 @@
 class Admin::SongsController < ApplicationController
+  before_action :require_auth
 
   def index
+    # Just for testing
+    # SendReportMostPopularSongsJob.perform_later
     @songs = Song.all
   end
 
@@ -40,6 +43,16 @@ class Admin::SongsController < ApplicationController
     redirect_to admin_songs_path, notice: "The song was successfully deleted"
   end
 
+  def add_album
+    song = Song.find(params[:song_id])
+    if params.key?("album_id")
+      album = Album.find(params[:album_id])
+      song.albums << album
+      
+    end
+    redirect_to edit_admin_song_path(song)
+  end
+
   private
 
   def song_params
@@ -47,11 +60,16 @@ class Admin::SongsController < ApplicationController
       :title,
       :duration,
       :rating,
-      :progress
+      :progress,
+      :cover
     )
   end
 
   rescue_from ActiveRecord::RecordNotFound do |e|
     render json: { message: e.message }, status: :not_found
+  end
+
+  def require_auth
+    authorize [:admin, Song]
   end
 end

@@ -1,0 +1,5 @@
+Hi <%= @user.email %>
+These are the most rated songs:
+  <% @songs.each do |song| %>
+    <%= song.title %>
+  <% end %>

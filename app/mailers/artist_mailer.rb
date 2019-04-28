@@ -1,0 +1,3 @@
+class ArtistMailer < ApplicationMailer
+
+end

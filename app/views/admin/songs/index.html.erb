@@ -1,28 +1,30 @@
 <h1>List of songs</h1>
 <table>
-    <tr>
-        <thead>
-            <th>Title</th>
-            <th>Duration</th>
-            <th>Progress</th>
-            <th>Rating</th>
-            <th>Actions</th>
-        </thead>
-    </tr>
-    <%@songs.each do |song| %>
-    <tr>
-        <td><%= song.title%></td>
-        <td><%= song.duration%></td>
-        <td><%= song.progress%></td>
-        <td><%= song.rating%></td>
-        <td>
-            <%= link_to "Details", admin_song_path(song) %>
-            <%= link_to "Update", edit_admin_song_path(song)%>
-            <%= link_to "Delete", admin_song_path(song), method: :delete, data: { confirm: "Really delete this song?" } %>
-        </td>
-    </tr>
-    <%end%>
+  <tr>
+    <thead>
+      <th>Title</th>
+      <th>Duration</th>
+      <th>Progress</th>
+
+      <th>Actions</th>
+    </thead>
+  </tr>
+  <%@songs.each do |song| %>
+  <tr>
+      <td><%= song.title%></td>
+      <td><%= song.duration%></td>
+      <td><%= song.progress%></td>
+      
+      <td>
+        <%= link_to "Details", admin_song_path(song) %>
+        <%= link_to "Update", edit_admin_song_path(song)%>
+        <%= link_to "Delete", admin_song_path(song), method: :delete, data: { confirm: "Really delete this song?" } %>
+      </td>
+  </tr>
+  <%end%>
 </table>
 
 
-<%= link_to 'New Song', new_admin_song_path %>
+<%= link_to 'New Song', new_admin_song_path %> |
+
+<%= link_to 'Home', admin_home_path %>

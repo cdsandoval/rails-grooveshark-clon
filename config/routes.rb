@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
 
-  devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root to: "home#index"
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  root "home#index"
 
   namespace :api do
     resources :artists, only: [ :index, :show] do
@@ -50,6 +49,12 @@ Rails.application.routes.draw do
       get "/new" => :new, on: :collection
       get "/edit" => :edit, on: :member
     end
+
+    get "/home" => "home#index"
+    # get "/home" => admin_home_path
+
+  post "/add_artist_album", to: "albums#add_artist"
+  post "/add_album_song", to: "songs#add_album"
   end
 
 end

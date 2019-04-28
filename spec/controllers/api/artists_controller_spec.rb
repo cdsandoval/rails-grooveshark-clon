@@ -7,10 +7,10 @@ RSpec.describe Api::ArtistsController, type: :controller do
     Album.delete_all
     @song1 = Song.create( title: "How long",
                           duration: 214,
-                          rating: 0,
+                          
                           progress: 0)
-    @album1 = Album.create( title: "Nuevo album",
-                            rating: 0)
+    @album1 = Album.create( title: "Nuevo album"
+                            )
     @artist1 = Artist.create(  name: "Juanes",
                               age: "35")
     @artist1.songs << @song1
@@ -18,10 +18,10 @@ RSpec.describe Api::ArtistsController, type: :controller do
 
     @song2 = Song.create( title: "You have done for me",
                           duration: 267,
-                          rating: 0,
+                          
                           progress: 0)
-    @album2 = Album.create( title: "Nuevo album2",
-                            rating: 0)
+    @album2 = Album.create( title: "Nuevo album2"
+                            )
     @artist2 = Artist.create(  name: "Juan Gabriel",
                               age: "46")
     @artist2.songs << @song2
@@ -29,7 +29,7 @@ RSpec.describe Api::ArtistsController, type: :controller do
 
     @song3 = Song.create( title: "The long son",
                           duration: 273,
-                          rating: 0,
+                          
                           progress: 0)
   end
 

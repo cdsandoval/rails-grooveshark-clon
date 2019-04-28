@@ -1,8 +1,11 @@
 <h1>Song: <%= @song.title %></h1>
+<% if @song.cover.attached? %>
+<%= image_tag @song.cover.variant(resize: "300x300") %>
+<% end %>
 <p>
   <strong>Duration:</strong>
   <%= @song.duration %>
-</p>
+</p>    
 
 <h2>Artist</h2>
 <table>
@@ -26,13 +29,13 @@
     <tr>
         <thead>
             <th>Title</th>
-            <th>Rating</th>
+            
         </thead>
     </tr>
   <% @song.albums.each do | album | %>
     <tr>
         <td><%= album.title%></td>
-        <td><%= album.rating%></td>
+        
     </tr>
     <%end%>
 </table>

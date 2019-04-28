@@ -1,0 +1,14 @@
+<h1>Hi. Welcome, <%= @user.email %> to GrooveShark.</h1>
+<p>
+    Thanks for registering!
+    
+</p>
+<p>
+  These are the most popular songs:
+  <ul>
+    <% @songs.each do |song| %>
+    <li><%= song.title %></li>
+    <% end %>
+  </ul>
+</p>
+<p>Have a great day!</p>

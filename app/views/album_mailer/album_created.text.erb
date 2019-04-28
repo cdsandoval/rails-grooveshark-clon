@@ -1,0 +1,15 @@
+Prueba
+# Hi <%= @user.email %>
+---
+
+A new artist has been successfully created. 
+
+<% if @album.artists.any? %>
+  The data of the artist is:
+  - **Name**: <%= @album.artists.first.name %>
+  - **Age**: <%= @album.artists.first.age %>
+  If you want to read this artist, go to <%= admin_artist_url(@album.artists.first) %>
+<% end %>
+
+Have a great day!
+

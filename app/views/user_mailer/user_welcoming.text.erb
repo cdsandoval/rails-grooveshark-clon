@@ -1,0 +1,17 @@
+# Hi. Welcome, <%= @user.email %> to GrooveShark.
+---
+
+  Thanks for registering!
+  
+---
+ 
+  These are the most popular songs:
+  
+    <% @songs.each do |song| %>
+    <%= song.title %>
+    <% end %>
+
+
+---
+
+Have a great day!

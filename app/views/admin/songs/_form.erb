@@ -19,15 +19,33 @@
     <%= f.text_field :duration %>
   </div>
 
-  <div class="field">
-    <%= f.label :rating %>
-    <%= f.text_field :rating %>
-  </div>
+
 
   <div class="field">
     <%= f.label :progress %>
     <%= f.text_field :progress %>
   </div>
+
+  <p>
+    <%= f.label :cover %><br />
+    <%= f.file_field :cover %>
+  </p>
+
+  <p>Albums</p>
+
+  <form action="/admin/add_album_song" method="post">
+    <select name="album_id">
+      <option selected disabled>Select one album</option>
+      <% Album.all.each do |album_option| %>
+        <% if  @song.albums.where(id: album_option.id).count == 0 %>
+          <option value="<%=album_option.id%>"><%=album_option.title%></option>
+        <%end%>
+      <%end%>
+    </select>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <input type="hidden" name="song_id" value="<%=@song.id%>">
+    <input type="submit" value="Add">
+  </form>
 
   <div class="actions">
     <%= f.submit %>
