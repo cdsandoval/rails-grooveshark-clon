@@ -31,7 +31,7 @@
 
   <p>Albums</p>
 
-  <%= f.colection_select(:album_ids, Album.all, :id, :name) %>
+  <%= f.collection_select(:album_ids, Album.all, :id, :title) %>
 
   <div class="actions">
     <%= f.submit %>

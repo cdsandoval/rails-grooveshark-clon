@@ -18,10 +18,10 @@ class Admin::SongsController < ApplicationController
   def create
     @song = Song.new(song_params)
     if @song.save
-      creator = @song.albums.first
-      if creator.songs.count == 1
+        a = @song.albums.first
+        if a.songs.count == 1
         SendSongCreatedNotificacionJob.perform_now @song
-      end
+        end
       redirect_to admin_songs_path, notice: "Song was successfully created"
     else
       render :new
