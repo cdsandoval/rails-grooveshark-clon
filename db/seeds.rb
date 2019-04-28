@@ -121,6 +121,14 @@ user = User.create!(
   role: "admin"
 )
 
+user = User.create!(
+  email: "prints.lian.2019@gmail.com",
+  password: "secretin",
+  password_confirmation: "secretin",
+  role: "admin"
+)
+
+
 
 p "Seed Data Created"
 

@@ -18,7 +18,11 @@ class Admin::SongsController < ApplicationController
   def create
     @song = Song.new(song_params)
     if @song.save
-      redirect_to admin_songs_path, notice: 'song was successfully created.'
+      creator = @song.albums.first
+      if creator.songs.count == 1
+        SendSongCreatedNotificacionJob.perform_now @song
+      end
+      redirect_to admin_songs_path, notice: "Song was successfully created"
     else
       render :new
     end
@@ -45,11 +49,14 @@ class Admin::SongsController < ApplicationController
 
   def add_album
     song = Song.find(params[:song_id])
-    if params.key?("album_id")
-      album = Album.find(params[:album_id])
-      song.albums << album
-      
-    end
+    # if params.key?("album_id")
+    #   album = Album.find(params[:album_id])
+    #   song.albums << album 
+    # end
+
+    @album = Album.find(params[:album_id])
+    @song.albums << album
+
     redirect_to edit_admin_song_path(song)
   end
 
@@ -61,7 +68,8 @@ class Admin::SongsController < ApplicationController
       :duration,
       :rating,
       :progress,
-      :cover
+      :cover,
+      :song_ids
     )
   end
 
